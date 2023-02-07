@@ -2,6 +2,8 @@
 
 import 'dart:core';
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -87,6 +89,7 @@ class _FormcluesState extends State<Formclues> {
   var _lat = 0.0;
   var _long = 0.0;
   late Position userLocation;
+  var position = LatLng(0, 0);
   late GoogleMapController mapController;
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
@@ -118,6 +121,7 @@ class _FormcluesState extends State<Formclues> {
     Position _userLocation = await Geolocator.getCurrentPosition();
     setState(() {
       userLocation = _userLocation;
+      position = LatLng(userLocation.latitude, userLocation.longitude);
     });
   }
 
@@ -150,13 +154,13 @@ class _FormcluesState extends State<Formclues> {
                 final isLastStep = currentStep == getSteps().length - 1;
 
                 if (currentStep == 1) {
+                  FocusScope.of(context).unfocus();
                   formKey1.currentState!.validate();
                 }
                 // if (currentStep == 2) {
                 //   formKey2.currentState!.validate();
                 // }
-
-                print("==== ${currentStep}");
+                // print("==== ${currentStep}");
                 if (isLastStep) {
                   setState(() {
                     isCompleted = true;
@@ -220,7 +224,7 @@ class _FormcluesState extends State<Formclues> {
   }
 
   bool isDetailComplete() {
-    print("-------" + currentStep.toString());
+    // print("-------" + currentStep.toString());
     if (currentStep == 1) {
       //check sender fields
       if (pointController.text.isEmpty || pointController.text.isEmpty) {
@@ -284,9 +288,43 @@ class _FormcluesState extends State<Formclues> {
                           mapType: MapType.normal,
                           onMapCreated: _onMapCreated,
                           myLocationEnabled: true,
+                          gestureRecognizers: Set()
+                            ..add(Factory<OneSequenceGestureRecognizer>(
+                                () => new EagerGestureRecognizer()))
+                            ..add(Factory<PanGestureRecognizer>(
+                                () => PanGestureRecognizer()))
+                            ..add(Factory<ScaleGestureRecognizer>(
+                                () => ScaleGestureRecognizer()))
+                            ..add(Factory<TapGestureRecognizer>(
+                                () => TapGestureRecognizer()))
+                            ..add(Factory<VerticalDragGestureRecognizer>(
+                                () => VerticalDragGestureRecognizer())),
+                          onTap: (value) {
+                            setState(() {
+                              position = LatLng(
+                                value.latitude,
+                                value.longitude,
+                              );
+                            });
+                            setState(() {
+                              _lat = position.latitude;
+                              _long = position.longitude;
+                              locationController.text = "$_lat,$_long";
+                            });
+                          },
+                          markers: <Marker>[
+                            Marker(
+                              markerId: MarkerId('id'),
+                              position: position,
+                              infoWindow: InfoWindow(
+                                  title: 'You Location',
+                                  snippet:
+                                      'lat = ${position.latitude}, lng = ${position.longitude}'),
+                            ),
+                          ].toSet(),
                           initialCameraPosition: CameraPosition(
-                              target: LatLng(userLocation.latitude,
-                                  userLocation.longitude),
+                              target:
+                                  LatLng(position.latitude, position.longitude),
                               zoom: 15),
                         );
                       } else {
@@ -315,11 +353,10 @@ class _FormcluesState extends State<Formclues> {
                   label: const Text("ค้นหาสถานที่"),
                   onPressed: () {
                     mapController.animateCamera(CameraUpdate.newLatLngZoom(
-                        LatLng(userLocation.latitude, userLocation.longitude),
-                        18));
+                        LatLng(position.latitude, position.longitude), 18));
                     setState(() {
-                      _lat = userLocation.latitude;
-                      _long = userLocation.longitude;
+                      _lat = position.latitude;
+                      _long = position.longitude;
                       locationController.text = "$_lat,$_long";
                     });
                     Fluttertoast.showToast(
