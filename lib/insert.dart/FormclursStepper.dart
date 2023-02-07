@@ -148,9 +148,7 @@ class _FormcluesState extends State<Formclues> {
               // },
               onStepContinue: () {
                 final isLastStep = currentStep == getSteps().length - 1;
-                // if (currentStep == 0) {
-                //   formKey0.currentState!.validate();
-                // }
+
                 if (currentStep == 1) {
                   formKey1.currentState!.validate();
                 }
