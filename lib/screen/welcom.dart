@@ -1,5 +1,7 @@
 
 
+// ignore_for_file: sort_child_properties_last
+
 import 'package:flutter/material.dart';
 import 'package:main_cluesnew/insert.dart/FormclursStepper.dart';
 
@@ -87,7 +89,7 @@ SizedBox welcomebutton(BuildContext context) {
       onPressed: () {
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) {
-          return Formclues();
+          return const Formclues();
         }));
       },
       style: ElevatedButton.styleFrom(
