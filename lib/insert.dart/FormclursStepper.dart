@@ -78,7 +78,8 @@ class _FormcluesState extends State<Formclues> {
     Details: '',
     Name: '',
     Phone: '',
-    Point: '', Address: '',
+    Point: '',
+    Address: '',
   );
   // เตรียม firebase
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
@@ -853,10 +854,11 @@ class _FormcluesState extends State<Formclues> {
                   height: 10,
                   color: Colors.indigo,
                 ),
+
                 const SizedBox(
                   height: 20,
                 ),
-Row(
+                Row(
                   children: [
                     const Icon(
                       Icons.location_on_outlined,
@@ -869,8 +871,7 @@ Row(
                         const Text('ที่อยู่'),
                         SizedBox(
                             width: MediaQuery.of(context).size.width * 0.6,
-                            child:
-                                Text("${addressController.text}")),
+                            child: Text('${addressController.text}')),
                       ],
                     ),
                   ],
