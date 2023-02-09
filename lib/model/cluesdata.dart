@@ -9,6 +9,7 @@ class Cluesdata {
   String Name;
   String Phone;
   String Point;
+  String Address;
 
   Cluesdata({
     required this.Location,
@@ -19,5 +20,6 @@ class Cluesdata {
     required this.Name,
     required this.Phone,
     required this.Point,
+    required this.Address
   });
 }

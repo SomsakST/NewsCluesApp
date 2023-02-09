@@ -1,7 +1,8 @@
-// ignore_for_file: use_build_context_synchronously, non_constant_identifier_names, sort_child_properties_last
+// ignore_for_file: use_build_context_synchronously, non_constant_identifier_names, sort_child_properties_last, prefer_collection_literals
 
 import 'dart:core';
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:faker/faker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +34,7 @@ class _FormcluesState extends State<Formclues> {
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController pointController = TextEditingController();
+  TextEditingController addressController = TextEditingController();
 
   List<Type> dropdownItem = Type.getType();
   late List<DropdownMenuItem<Type>> dropdownMenuItems;
@@ -76,7 +78,7 @@ class _FormcluesState extends State<Formclues> {
     Details: '',
     Name: '',
     Phone: '',
-    Point: '',
+    Point: '', Address: '',
   );
   // เตรียม firebase
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
@@ -89,7 +91,7 @@ class _FormcluesState extends State<Formclues> {
   var _lat = 0.0;
   var _long = 0.0;
   late Position userLocation;
-  var position = LatLng(0, 0);
+  var position = const LatLng(0, 0);
   late GoogleMapController mapController;
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
@@ -275,7 +277,48 @@ class _FormcluesState extends State<Formclues> {
                   color: Color.fromARGB(255, 12, 24, 94),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
+                ),
+                TextFormField(
+                  controller: addressController,
+                  // validator: (value) {
+                  //   if (value == null || value.isEmpty) {
+                  //     return "*กรุณากรอกข้อมูลให้ครบ";
+                  //   }
+                  //   return null;
+                  // },
+                  onSaved: (Address) {
+                    cluesdata.Address = Address!;
+                  },
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(32)),
+                      borderSide:
+                          BorderSide(color: Color(0xFF244684), width: 2),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(32)),
+                      borderSide:
+                          BorderSide(color: Color(0xFF244684), width: 2),
+                    ),
+                    errorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(32)),
+                      borderSide: BorderSide(color: Colors.red, width: 2),
+                    ),
+                    prefixIcon: Icon(
+                      Icons.location_on_outlined,
+                      color: Colors.grey,
+                    ),
+                    label: Text(
+                      'หมู่บ้าน,ซอย,ตำบล,อำเภอ,จังหวัด ',
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                  ),
+                  maxLines: 5,
+                  minLines: 1,
+                ),
+                const SizedBox(
+                  height: 15,
                 ),
                 SizedBox(
                   height: 400,
@@ -290,7 +333,7 @@ class _FormcluesState extends State<Formclues> {
                           myLocationEnabled: true,
                           gestureRecognizers: Set()
                             ..add(Factory<OneSequenceGestureRecognizer>(
-                                () => new EagerGestureRecognizer()))
+                                () => EagerGestureRecognizer()))
                             ..add(Factory<PanGestureRecognizer>(
                                 () => PanGestureRecognizer()))
                             ..add(Factory<ScaleGestureRecognizer>(
@@ -314,7 +357,7 @@ class _FormcluesState extends State<Formclues> {
                           },
                           markers: <Marker>[
                             Marker(
-                              markerId: MarkerId('id'),
+                              markerId: const MarkerId('id'),
                               position: position,
                               infoWindow: InfoWindow(
                                   title: 'You Location',
@@ -470,7 +513,7 @@ class _FormcluesState extends State<Formclues> {
                           }
                         },
                       )),
-                      SizedBox(
+                      const SizedBox(
                         width: 5,
                       ),
                       Expanded(
@@ -481,8 +524,7 @@ class _FormcluesState extends State<Formclues> {
                           }
                           return null;
                         },
-                        controller:
-                            timeController, //editing controller of this TextField
+                        controller: timeController,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(
                                 borderRadius:
@@ -505,7 +547,6 @@ class _FormcluesState extends State<Formclues> {
                             ),
                             labelText: "เวลา"),
                         readOnly: true,
-
                         onSaved: (Time) {
                           cluesdata.Time = Time!;
                         },
@@ -815,7 +856,28 @@ class _FormcluesState extends State<Formclues> {
                 const SizedBox(
                   height: 20,
                 ),
-
+Row(
+                  children: [
+                    const Icon(
+                      Icons.location_on_outlined,
+                      size: 50,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        const Text('ที่อยู่'),
+                        SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.6,
+                            child:
+                                Text("${addressController.text}")),
+                      ],
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
                 Row(
                   children: [
                     const Icon(
@@ -1001,7 +1063,8 @@ class _FormcluesState extends State<Formclues> {
               "Detaill": detaillsController.text,
               "Name": nameController.text,
               "Phone": phoneController.text,
-              "Point": pointController.text
+              "Point": pointController.text,
+              "Address": addressController.text
             });
             // ignore: use_build_context_synchronously
             AwesomeDialog(

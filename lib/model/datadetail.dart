@@ -2,6 +2,8 @@
 
 import 'dart:convert';
 
+import 'package:main_cluesnew/Maps/main.dart';
+
 class Cluesdata {
   String Location;
   String Time;
@@ -11,6 +13,7 @@ class Cluesdata {
   String Name;
   String Phone;
   String Point;
+  String Address;
 
   Cluesdata({
     required this.Location,
@@ -21,6 +24,7 @@ class Cluesdata {
     required this.Name,
     required this.Phone,
     required this.Point,
+    required this.Address
   });
 
   Cluesdata copyWith({
@@ -32,6 +36,7 @@ class Cluesdata {
     String? Name,
     String? Phone,
     String? Point,
+    String? Address
   }) {
     return Cluesdata(
         Location: Location ?? this.Location,
@@ -41,7 +46,8 @@ class Cluesdata {
         Details: Details ?? this.Details,
         Name: Name ?? this.Name,
         Phone: Phone ?? this.Phone,
-        Point: Point ?? this.Point);
+        Point: Point ?? this.Point,
+        Address: Address ?? this.Address);
   }
 
   Map<String, dynamic> toMap() {
@@ -55,6 +61,7 @@ class Cluesdata {
     result.addAll({'Name': Name});
     result.addAll({'Phone': Phone});
     result.addAll({'Point': Point});
+    result.addAll({'Addresss': Address});
 
     return result;
   }
@@ -69,6 +76,7 @@ class Cluesdata {
       Name: map['Name'] ?? '',
       Phone: map['Phone'] ?? '',
       Point: map['Point'] ?? '',
+      Address: map['Address'] ?? ''
     );
   }
 
@@ -79,7 +87,7 @@ class Cluesdata {
 
   @override
   String toString() {
-    return 'Cluesdata(Location: $Location, Time: $Time, Date: $Date, Type: $Type, Details: $Details, Name: $Name ,Phone: $Phone, Point: $Point )';
+    return 'Cluesdata(Location: $Location, Time: $Time, Date: $Date, Type: $Type, Details: $Details, Name: $Name ,Phone: $Phone, Point: $Point, Address: $Address )';
   }
 
   @override
@@ -94,7 +102,9 @@ class Cluesdata {
         other.Details == Details &&
         other.Name == Name &&
         other.Phone == Phone &&
-        other.Point == Point;
+        other.Point == Point &&
+        other.Address == Address
+        ;
   }
 
   @override
@@ -106,6 +116,8 @@ class Cluesdata {
         Details.hashCode ^
         Name.hashCode ^
         Phone.hashCode ^
-        Point.hashCode;
+        Point.hashCode^
+        Address.hashCode
+        ;
   }
 }
