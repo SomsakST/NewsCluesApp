@@ -73,11 +73,20 @@ class _ContactDsiState extends State<ContactDsi> {
                           height: 10,
                         ),
                         const Text(
-                          'กองเทคโนโลยีและศูนย์ข้อมูลการตรวจสอบ\n( ชั้น 7 ) อาคารกรมสอบสวนคดีพิเศษ',
+                          'ส่วนวิเคราะห์ข้อมูลอาชญากรรมและการข่าว ',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Color.fromARGB(255, 255, 255, 255),
                             fontSize: 17,
+                            height: 1.5,
+                          ),
+                        ),
+                        const Text(
+                          'กองเทคโนโลยีและศูนย์ข้อมูลการตรวจสอบ ( ชั้น 7 )\nอาคารกรมสอบสวนคดีพิเศษ',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 255, 255, 255),
+                           
                             height: 1.5,
                           ),
                         ),

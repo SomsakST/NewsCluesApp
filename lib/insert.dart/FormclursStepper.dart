@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -292,17 +293,9 @@ class _FormcluesState extends State<Formclues> {
                   height: 15,
                   color: Color.fromARGB(255, 12, 24, 94),
                 ),
-                const SizedBox(
-                  height: 15,
-                ),
+                
                 TextFormField(
                   controller: addressController,
-                  // validator: (value) {
-                  //   if (value == null || value.isEmpty) {
-                  //     return "*กรุณากรอกข้อมูลให้ครบ";
-                  //   }
-                  //   return null;
-                  // },
                   onSaved: (Address) {
                     cluesdata.Address = Address!;
                   },
@@ -334,10 +327,10 @@ class _FormcluesState extends State<Formclues> {
                   minLines: 1,
                 ),
                 const SizedBox(
-                  height: 15,
+                  height: 10,
                 ),
                 SizedBox(
-                  height: 400,
+                  height: 450,
                   width: 600,
                   child: FutureBuilder(
                     future: _getLocation(),
@@ -366,8 +359,8 @@ class _FormcluesState extends State<Formclues> {
                               );
                             });
                             setState(() {
-                              _lat = position.latitude;
-                              _long = position.longitude;
+                              _lat = userLocation.latitude;
+                              _long = userLocation.longitude;
                               locationController.text = "$_lat,$_long";
                             });
                           },
@@ -383,7 +376,7 @@ class _FormcluesState extends State<Formclues> {
                           ].toSet(),
                           initialCameraPosition: CameraPosition(
                               target:
-                                  LatLng(position.latitude, position.longitude),
+                                  LatLng(userLocation.latitude, userLocation.longitude),
                               zoom: 15),
                         );
                       } else {
@@ -769,8 +762,6 @@ class _FormcluesState extends State<Formclues> {
                     children: [
                       TextFormField(
                         controller: nameController,
-                        // validator: RequiredValidator(
-                        //     errorText: "กรุณากรอกข้อมูลให้ครบ"),
                         onSaved: (Name) {
                           cluesdata.Name = Name!;
                         },
@@ -785,12 +776,6 @@ class _FormcluesState extends State<Formclues> {
                             borderSide:
                                 BorderSide(color: Color(0xFF244684), width: 2),
                           ),
-                          // errorBorder: OutlineInputBorder(
-                          //   borderRadius:
-                          //       BorderRadius.all(Radius.circular(32)),
-                          //   borderSide:
-                          //       BorderSide(color: Colors.red, width: 2),
-                          // ),
                           prefixIcon: Icon(
                             Icons.people_outline_rounded,
                             color: Colors.grey,
@@ -807,6 +792,7 @@ class _FormcluesState extends State<Formclues> {
                         height: 10,
                       ),
                       TextFormField(
+                        inputFormatters: [LengthLimitingTextInputFormatter(10),],
                         controller: phoneController,
                         onSaved: (Phone) {
                           cluesdata.Phone = Phone!;
