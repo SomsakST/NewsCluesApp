@@ -2,7 +2,6 @@
 
 import 'dart:core';
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:faker/faker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -24,8 +23,6 @@ class Formclues extends StatefulWidget {
 }
 
 class _FormcluesState extends State<Formclues> {
-  String dropdownValue = '';
-// กำหนดตัวเเปลของเวลาเเละวัน
   TextEditingController timeController = TextEditingController();
   TextEditingController dateController = TextEditingController();
   TextEditingController locationController = TextEditingController();
@@ -36,9 +33,11 @@ class _FormcluesState extends State<Formclues> {
   TextEditingController pointController = TextEditingController();
   TextEditingController addressController = TextEditingController();
 
+  String dropdownValue = '';
   List<Type> dropdownItem = Type.getType();
   late List<DropdownMenuItem<Type>> dropdownMenuItems;
   late Type _selectedItem;
+
   @override
   void dispose() {
     super.dispose();
@@ -56,20 +55,15 @@ class _FormcluesState extends State<Formclues> {
     _selectedItem = dropdownMenuItems[0].value!;
   }
 
-// กำหนดตัวเเปลของเวลาเเละวัน
 // signout function
   signOut() async {
     await auth.signOut();
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => Nevbar()));
   }
-// กำหนดการตั้งค่า Firebase
 
+// กำหนดการตั้งค่า Firebase.......................................................................
   final FirebaseAuth auth = FirebaseAuth.instance;
-
-  final formKey0 = GlobalKey<FormState>();
-  final formKey1 = GlobalKey<FormState>();
-  final formKey2 = GlobalKey<FormState>();
   Cluesdata cluesdata = Cluesdata(
     Location: '',
     Date: '',
@@ -85,7 +79,9 @@ class _FormcluesState extends State<Formclues> {
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
   final CollectionReference _cluesdataCollection =
       FirebaseFirestore.instance.collection("cluesdata");
-// กำหนดการตั้งค่า Firebase
+// กำหนดการตั้งค่า Firebase........................................................................
+
+
   int currentStep = 0;
   bool isCompleted = false;
 
@@ -127,6 +123,10 @@ class _FormcluesState extends State<Formclues> {
       position = LatLng(userLocation.latitude, userLocation.longitude);
     });
   }
+
+  // final formKey0 = GlobalKey<FormState>();
+  final formKey1 = GlobalKey<FormState>();
+  // final formKey2 = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -198,7 +198,13 @@ class _FormcluesState extends State<Formclues> {
                   children: <Widget>[
                     OutlinedButton(
                       onPressed: details.onStepCancel,
-                      child: const Text('ย้อนกลับ'),
+                      child: Row(
+                        children: const [
+                          Icon(Icons.arrow_circle_left_outlined),
+                          SizedBox(width: 5,),
+                          Text('ย้อนกลับ'),
+                        ],
+                      ),
                       style: ElevatedButton.styleFrom(
                         shadowColor: Colors.black,
                         shape: RoundedRectangleBorder(
@@ -208,11 +214,20 @@ class _FormcluesState extends State<Formclues> {
                     ),
                     OutlinedButton(
                       onPressed: details.onStepContinue,
-                      child: const Text('ถัดไป'),
+                      child: Row(
+                        children: const [
+                          Text('ถัดไป'),
+                          SizedBox(width: 5,),
+                          Icon(Icons.arrow_circle_right_outlined),
+                        ],
+                      ),
                       style: ElevatedButton.styleFrom(
+                        
                         shadowColor: Colors.black,
                         shape: RoundedRectangleBorder(
+                        
                           borderRadius: BorderRadius.circular(32),
+                          
                         ),
                       ),
                     ),

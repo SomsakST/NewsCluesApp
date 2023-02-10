@@ -64,7 +64,7 @@ class _welcomeState extends State<welcome> {
 
   Text text1() {
     return const Text(
-      "ยินดีตอนรับ",
+      "ยินดีต้อนรับ",
       style: TextStyle(
         color: Color.fromARGB(255, 255, 255, 255),
         fontSize: 35.0,

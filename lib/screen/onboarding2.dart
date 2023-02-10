@@ -100,7 +100,7 @@ class _OnboardingScreen2State extends State<OnboardingScreen2> {
   List<Widget> _buildIndicator() {
     List<Widget> indicators = [];
 
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 8; i++) {
       if (currentIndex == i) {
         indicators.add(_indicator(true));
       } else {
