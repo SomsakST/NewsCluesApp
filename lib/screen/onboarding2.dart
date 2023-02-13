@@ -135,7 +135,7 @@ class createPage extends StatelessWidget {
           SizedBox(
             // height: 670,
             // width: 380,
-            height: 650,
+            height: 600,
             width: 500,
             child: Image.asset(image),
           ),

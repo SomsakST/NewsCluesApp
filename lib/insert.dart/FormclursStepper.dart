@@ -1,4 +1,4 @@
-// ignore_for_file: use_build_context_synchronously, non_constant_identifier_names, sort_child_properties_last, prefer_collection_literals
+// ignore_for_file: use_build_context_synchronously, non_constant_identifier_names, sort_child_properties_last, prefer_collection_literals, deprecated_member_use
 
 import 'dart:core';
 import 'package:awesome_dialog/awesome_dialog.dart';
@@ -81,7 +81,6 @@ class _FormcluesState extends State<Formclues> {
   final CollectionReference _cluesdataCollection =
       FirebaseFirestore.instance.collection("cluesdata");
 // กำหนดการตั้งค่า Firebase........................................................................
-
 
   int currentStep = 0;
   bool isCompleted = false;
@@ -202,7 +201,9 @@ class _FormcluesState extends State<Formclues> {
                       child: Row(
                         children: const [
                           Icon(Icons.arrow_circle_left_outlined),
-                          SizedBox(width: 5,),
+                          SizedBox(
+                            width: 5,
+                          ),
                           Text('ย้อนกลับ'),
                         ],
                       ),
@@ -218,17 +219,16 @@ class _FormcluesState extends State<Formclues> {
                       child: Row(
                         children: const [
                           Text('ถัดไป'),
-                          SizedBox(width: 5,),
+                          SizedBox(
+                            width: 5,
+                          ),
                           Icon(Icons.arrow_circle_right_outlined),
                         ],
                       ),
                       style: ElevatedButton.styleFrom(
-                        
                         shadowColor: Colors.black,
                         shape: RoundedRectangleBorder(
-                        
                           borderRadius: BorderRadius.circular(32),
-                          
                         ),
                       ),
                     ),
@@ -293,7 +293,11 @@ class _FormcluesState extends State<Formclues> {
                   height: 15,
                   color: Color.fromARGB(255, 12, 24, 94),
                 ),
-                
+                SizedBox(
+                  height: 10,
+                ),
+                const Text("กรอกข้อมูล ( หมู่บ้าน,ซอย,ตำบล,อำเภอ,จังหวัด ) "),
+                const SizedBox(height: 8),
                 TextFormField(
                   controller: addressController,
                   onSaved: (Address) {
@@ -315,11 +319,11 @@ class _FormcluesState extends State<Formclues> {
                       borderSide: BorderSide(color: Colors.red, width: 2),
                     ),
                     prefixIcon: Icon(
-                      Icons.location_on_outlined,
+                      Icons.location_searching_outlined,
                       color: Colors.grey,
                     ),
                     label: Text(
-                      'หมู่บ้าน,ซอย,ตำบล,อำเภอ,จังหวัด ',
+                      '',
                       style: TextStyle(color: Colors.grey),
                     ),
                   ),
@@ -327,8 +331,10 @@ class _FormcluesState extends State<Formclues> {
                   minLines: 1,
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
+                const Text("ปักหมุดสถานที่พบ"),
+                const SizedBox(height: 8),
                 SizedBox(
                   height: 450,
                   width: 600,
@@ -369,14 +375,14 @@ class _FormcluesState extends State<Formclues> {
                               markerId: const MarkerId('id'),
                               position: position,
                               infoWindow: InfoWindow(
-                                  title: 'You Location',
+                                  title: 'สถานที่พบเบาะเเส',
                                   snippet:
                                       'lat = ${position.latitude}, lng = ${position.longitude}'),
                             ),
                           ].toSet(),
                           initialCameraPosition: CameraPosition(
-                              target:
-                                  LatLng(userLocation.latitude, userLocation.longitude),
+                              target: LatLng(userLocation.latitude,
+                                  userLocation.longitude),
                               zoom: 15),
                         );
                       } else {
@@ -394,7 +400,7 @@ class _FormcluesState extends State<Formclues> {
                   ),
                 ),
                 const SizedBox(
-                  height: 15,
+                  height: 5,
                 ),
                 Center(
                     child: ElevatedButton.icon(
@@ -428,7 +434,7 @@ class _FormcluesState extends State<Formclues> {
                   ),
                 )),
                 const SizedBox(
-                  height: 30,
+                  height: 20,
                 )
               ],
             )),
@@ -452,17 +458,13 @@ class _FormcluesState extends State<Formclues> {
                           color: Color.fromARGB(255, 23, 21, 75),
                           fontSize: 15.0,
                           fontWeight: FontWeight.bold)),
-                  const SizedBox(
-                    height: 20,
-                  ),
                   const Divider(
                     height: 10,
                     color: Color(0xFF244684),
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
-
                   const Text("วัน-เดิอน-ปี เเละ เวลา ที่พบการกระทำผิด"),
                   const SizedBox(height: 8),
                   Row(
@@ -569,9 +571,8 @@ class _FormcluesState extends State<Formclues> {
                       )),
                     ],
                   ),
-
                   const SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
                   const Text("ประเภทของคดี"),
                   const SizedBox(height: 8),
@@ -648,7 +649,7 @@ class _FormcluesState extends State<Formclues> {
                     }).toList(),
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
                   const Text("รายละเอียดเบาะแส/การกระทำผิด"),
                   const SizedBox(height: 8),
@@ -691,7 +692,7 @@ class _FormcluesState extends State<Formclues> {
                     minLines: 1,
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
                   const Text("จุดประสงค์ที่ต้องการให้ DSI ช่วยเหลือ/ดำเนินคดี"),
                   const SizedBox(height: 8),
@@ -746,18 +747,13 @@ class _FormcluesState extends State<Formclues> {
                           color: Colors.red,
                           fontSize: 15.0,
                           fontWeight: FontWeight.bold)),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  // เส้น
                   const Divider(
                     height: 10,
                     color: Colors.indigo,
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
-
                   Column(
                     children: [
                       TextFormField(
@@ -789,10 +785,12 @@ class _FormcluesState extends State<Formclues> {
                         minLines: 1,
                       ),
                       const SizedBox(
-                        height: 10,
+                        height: 5,
                       ),
                       TextFormField(
-                        inputFormatters: [LengthLimitingTextInputFormatter(10),],
+                        inputFormatters: [
+                          LengthLimitingTextInputFormatter(10),
+                        ],
                         controller: phoneController,
                         onSaved: (Phone) {
                           cluesdata.Phone = Phone!;
@@ -822,7 +820,7 @@ class _FormcluesState extends State<Formclues> {
                         minLines: 1,
                       ),
                       const SizedBox(
-                        height: 50,
+                        height: 20,
                       ),
                     ],
                   ),
@@ -847,23 +845,18 @@ class _FormcluesState extends State<Formclues> {
                         color: Color.fromARGB(255, 23, 21, 75),
                         fontSize: 15.0,
                         fontWeight: FontWeight.bold)),
-                const SizedBox(
-                  height: 20,
-                ),
-                // เส้น
                 const Divider(
                   height: 10,
                   color: Colors.indigo,
                 ),
-
-                const SizedBox(
+                SizedBox(
                   height: 20,
                 ),
                 Row(
                   children: [
                     const Icon(
                       Icons.location_on_outlined,
-                      size: 50,
+                      size: 35,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -872,7 +865,7 @@ class _FormcluesState extends State<Formclues> {
                         const Text('ที่อยู่'),
                         SizedBox(
                             width: MediaQuery.of(context).size.width * 0.6,
-                            child: Text('${addressController.text}')),
+                            child: Text(': ${addressController.text}')),
                       ],
                     ),
                   ],
@@ -884,7 +877,7 @@ class _FormcluesState extends State<Formclues> {
                   children: [
                     const Icon(
                       Icons.location_on_outlined,
-                      size: 50,
+                      size: 35,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -893,8 +886,8 @@ class _FormcluesState extends State<Formclues> {
                         const Text('สถานที่พบเบาะเเส'),
                         SizedBox(
                             width: MediaQuery.of(context).size.width * 0.6,
-                            child:
-                                Text(':ละติจูดที่ $_lat\n:ลองติจูดที่ $_long')),
+                            child: Text(
+                                ': ละติจูดที่ $_lat\n: ลองติจูดที่ $_long')),
                       ],
                     ),
                   ],
@@ -908,7 +901,7 @@ class _FormcluesState extends State<Formclues> {
                       children: [
                         const Icon(
                           Icons.date_range_rounded,
-                          size: 50,
+                          size: 35,
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -923,7 +916,7 @@ class _FormcluesState extends State<Formclues> {
                         ),
                         const Icon(
                           Icons.timelapse_rounded,
-                          size: 50,
+                          size: 35,
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -944,7 +937,7 @@ class _FormcluesState extends State<Formclues> {
                   children: [
                     const Icon(
                       Icons.view_comfy_alt_outlined,
-                      size: 50,
+                      size: 35,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -966,7 +959,7 @@ class _FormcluesState extends State<Formclues> {
                   children: [
                     const Icon(
                       Icons.description_outlined,
-                      size: 50,
+                      size: 35,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -988,7 +981,7 @@ class _FormcluesState extends State<Formclues> {
                   children: [
                     const Icon(
                       Icons.api_outlined,
-                      size: 50,
+                      size: 35,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -1011,7 +1004,7 @@ class _FormcluesState extends State<Formclues> {
                   children: [
                     const Icon(
                       Icons.person_pin_outlined,
-                      size: 50,
+                      size: 35,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -1030,13 +1023,21 @@ class _FormcluesState extends State<Formclues> {
                     ),
                   ],
                 ),
-
                 const SizedBox(
                   height: 50,
                 ),
                 Save(),
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(5),
+                    child: Image.asset(
+                      'images/1.png',
+                      scale: 1,
+                    ),
+                  ),
+                ),
                 const SizedBox(
-                  height: 50,
+                  height: 20,
                 ),
               ],
             ))
@@ -1068,23 +1069,12 @@ class _FormcluesState extends State<Formclues> {
               "Point": pointController.text,
               "Address": addressController.text
             });
-            // ignore: use_build_context_synchronously
             AwesomeDialog(
                 context: context,
-                animType: AnimType.scale,
-                dialogType: DialogType.success,
-                body: const Center(
-                  child: Padding(
-                    padding: EdgeInsets.all(20),
-                    child: Text(
-                      'บันทึกข้อมูลเรียบร้อยแล้ว',
-                      style: TextStyle(
-                        fontStyle: FontStyle.italic,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
-                ),
+                dialogType: DialogType.SUCCES,
+                animType: AnimType.BOTTOMSLIDE,
+                title: 'บันทึกข้อมูลเรียบร้อยแล้ว',
+                btnOkText: "ตกลง",
                 btnOkOnPress: () {
                   Navigator.push(
                     context,
@@ -1092,7 +1082,6 @@ class _FormcluesState extends State<Formclues> {
                   );
                 }).show();
           },
-          // },
           child: const Text(
             "บันทึก",
             style: TextStyle(fontSize: 20),

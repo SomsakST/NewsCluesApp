@@ -1,12 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:main_cluesnew/insert.dart/Test.dart';
 import 'package:main_cluesnew/screen/indexLogo.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         // primarySwatch: Colors.white,
       ),
       home: const indexLogo(),
-      // home:   ContactDsi(),
+      // home:   const HomeCard(),
     );
   }
 }
