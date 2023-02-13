@@ -337,7 +337,7 @@ class _FormcluesState extends State<Formclues> {
                 const SizedBox(height: 8),
                 SizedBox(
                   height: 450,
-                  width: 600,
+                  width: 500,
                   child: FutureBuilder(
                     future: _getLocation(),
                     builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -408,7 +408,7 @@ class _FormcluesState extends State<Formclues> {
                     Icons.search_outlined,
                     size: 25,
                   ),
-                  label: const Text("ค้นหาสถานที่"),
+                  label: const Text("ค้นหาเเละบันทึกสถานที่"),
                   onPressed: () {
                     mapController.animateCamera(CameraUpdate.newLatLngZoom(
                         LatLng(position.latitude, position.longitude), 18));
@@ -418,7 +418,7 @@ class _FormcluesState extends State<Formclues> {
                       locationController.text = "$_lat,$_long";
                     });
                     Fluttertoast.showToast(
-                      msg: "ค้นพบสถานที่เรียบร้อยแล้ว",
+                      msg: "ค้นพบเเละบันทึกสถานที่เรียบร้อยแล้ว",
                       toastLength: Toast.LENGTH_SHORT,
                       gravity: ToastGravity.CENTER,
                       timeInSecForIosWeb: 1,
@@ -785,7 +785,7 @@ class _FormcluesState extends State<Formclues> {
                         minLines: 1,
                       ),
                       const SizedBox(
-                        height: 5,
+                        height: 8,
                       ),
                       TextFormField(
                         inputFormatters: [
@@ -855,9 +855,10 @@ class _FormcluesState extends State<Formclues> {
                 Row(
                   children: [
                     const Icon(
-                      Icons.location_on_outlined,
+                      Icons.location_searching_outlined,
                       size: 35,
                     ),
+                    SizedBox(width: 10,),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -878,7 +879,7 @@ class _FormcluesState extends State<Formclues> {
                     const Icon(
                       Icons.location_on_outlined,
                       size: 35,
-                    ),
+                    ), SizedBox(width: 10,),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -902,7 +903,7 @@ class _FormcluesState extends State<Formclues> {
                         const Icon(
                           Icons.date_range_rounded,
                           size: 35,
-                        ),
+                        ), SizedBox(width: 10,),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -917,7 +918,7 @@ class _FormcluesState extends State<Formclues> {
                         const Icon(
                           Icons.timelapse_rounded,
                           size: 35,
-                        ),
+                        ), SizedBox(width: 10,),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -938,7 +939,7 @@ class _FormcluesState extends State<Formclues> {
                     const Icon(
                       Icons.view_comfy_alt_outlined,
                       size: 35,
-                    ),
+                    ), SizedBox(width: 10,),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -960,7 +961,7 @@ class _FormcluesState extends State<Formclues> {
                     const Icon(
                       Icons.description_outlined,
                       size: 35,
-                    ),
+                    ), SizedBox(width: 10,),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -982,7 +983,7 @@ class _FormcluesState extends State<Formclues> {
                     const Icon(
                       Icons.api_outlined,
                       size: 35,
-                    ),
+                    ), SizedBox(width: 10,),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -1005,7 +1006,7 @@ class _FormcluesState extends State<Formclues> {
                     const Icon(
                       Icons.person_pin_outlined,
                       size: 35,
-                    ),
+                    ), SizedBox(width: 10,),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -1024,7 +1025,7 @@ class _FormcluesState extends State<Formclues> {
                   ],
                 ),
                 const SizedBox(
-                  height: 50,
+                  height: 20,
                 ),
                 Save(),
                 Center(
@@ -1036,9 +1037,7 @@ class _FormcluesState extends State<Formclues> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
+                
               ],
             ))
       ];
