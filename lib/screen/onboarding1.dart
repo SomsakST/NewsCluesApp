@@ -58,6 +58,33 @@ class _OnboardingScreen1State extends State<OnboardingScreen1> {
               children: _buildIndicator(),
             ),
           ),
+           Positioned(
+            bottom: 0.5,
+            right: 20,
+            child: Container(
+              // ignore: sort_child_properties_last
+              child: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      if (currentIndex < 8) {
+                        currentIndex++;
+                        if (currentIndex < 8) {
+                          _pageController.nextPage(
+                              duration: const Duration(milliseconds: 300),
+                              curve: Curves.easeIn);
+                        }
+                      }
+                    });
+                  },
+                  icon: const Icon(
+                    Icons.arrow_forward_ios,
+                    size: 24,
+                    color: Colors.white,
+                  )),
+              decoration: const BoxDecoration(
+                  shape: BoxShape.circle,  color: Color(0xFF244684),),
+            ),
+          ),
         ],
       ),
     );
@@ -70,7 +97,7 @@ class _OnboardingScreen1State extends State<OnboardingScreen1> {
       width: isActive ? 20 : 8,
       margin: const EdgeInsets.only(right: 5.0),
       decoration: BoxDecoration(
-        color: Color(0xFF244684),
+        color: const Color(0xFF244684),
         borderRadius: BorderRadius.circular(5),
       ),
     );

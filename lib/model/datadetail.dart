@@ -14,6 +14,7 @@ class Cluesdata {
   String Phone;
   String Point;
   String Address;
+  String Note;
 
   Cluesdata({
     required this.Location,
@@ -24,7 +25,8 @@ class Cluesdata {
     required this.Name,
     required this.Phone,
     required this.Point,
-    required this.Address
+    required this.Address,
+    required this.Note
   });
 
   Cluesdata copyWith({
@@ -36,7 +38,8 @@ class Cluesdata {
     String? Name,
     String? Phone,
     String? Point,
-    String? Address
+    String? Address,
+    String? Note,
   }) {
     return Cluesdata(
         Location: Location ?? this.Location,
@@ -47,7 +50,9 @@ class Cluesdata {
         Name: Name ?? this.Name,
         Phone: Phone ?? this.Phone,
         Point: Point ?? this.Point,
-        Address: Address ?? this.Address);
+        Address: Address ?? this.Address, 
+        Note: Note ?? this.Note,
+        );
   }
 
   Map<String, dynamic> toMap() {
@@ -62,6 +67,7 @@ class Cluesdata {
     result.addAll({'Phone': Phone});
     result.addAll({'Point': Point});
     result.addAll({'Addresss': Address});
+    result.addAll({'Note': Note});
 
     return result;
   }
@@ -76,7 +82,8 @@ class Cluesdata {
       Name: map['Name'] ?? '',
       Phone: map['Phone'] ?? '',
       Point: map['Point'] ?? '',
-      Address: map['Address'] ?? ''
+      Address: map['Address'] ?? '',
+      Note: map['Note'] ?? ''
     );
   }
 
@@ -87,7 +94,7 @@ class Cluesdata {
 
   @override
   String toString() {
-    return 'Cluesdata(Location: $Location, Time: $Time, Date: $Date, Type: $Type, Details: $Details, Name: $Name ,Phone: $Phone, Point: $Point, Address: $Address )';
+    return 'Cluesdata(Location: $Location, Time: $Time, Date: $Date, Type: $Type, Details: $Details, Name: $Name ,Phone: $Phone, Point: $Point, Address: $Address, Note: $Note )';
   }
 
   @override
@@ -103,7 +110,8 @@ class Cluesdata {
         other.Name == Name &&
         other.Phone == Phone &&
         other.Point == Point &&
-        other.Address == Address
+        other.Address == Address &&
+         other.Note == Note
         ;
   }
 
@@ -117,7 +125,8 @@ class Cluesdata {
         Name.hashCode ^
         Phone.hashCode ^
         Point.hashCode^
-        Address.hashCode
+        Address.hashCode^
+       Note.hashCode
         ;
   }
 }

@@ -34,7 +34,7 @@ class _indexLogoState extends State<indexLogo> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset('images/Newclues.3.png', scale: 1.4),
+                Image.asset('images/Newclues.3.png', scale:1.5),
               ],
             ),
           ),

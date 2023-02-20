@@ -75,6 +75,7 @@ class _FormcluesState extends State<Formclues> {
     Phone: '',
     Point: '',
     Address: '',
+    Note: '',
   );
   // เตรียม firebase
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
@@ -293,7 +294,7 @@ class _FormcluesState extends State<Formclues> {
                   height: 15,
                   color: Color.fromARGB(255, 12, 24, 94),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 const Text("กรอกข้อมูล ( หมู่บ้าน,ซอย,ตำบล,อำเภอ,จังหวัด ) "),
@@ -619,31 +620,39 @@ class _FormcluesState extends State<Formclues> {
                     items: <String>[
                       '',
                       'การกู้ยืมเงินที่เป็นการฉ้อโกงประชาชน',
-                      'การแลกเปลี่ยนเงิน',
-                      'การเสนอราคาต่อหน่วยงานของรัฐ	',
-                      'เครื่องหมายการค้า',
+                      'การควบคุมการแลกเปลี่ยนเงิน',
+                      'ความผิดเกี่ยวกับการเสนอราคาต่อหน่วยงานรัฐ',
+                      'เรื่องการคุ้มครองผู้บริโภค',
+                      'เรื่องเครื่องหมายการค้า',
                       'บริษัทมหาชนจำกัด',
-                      'การฟอกเงิน',
+                      'การป้องกันและปราบปรามการฟอกเงิน',
+                      'มาตรฐานผลิตภัณฑ์อุตสาหกรรม',
+                      'กฎหมายลิขสิทธิ์',
                       'สิทธิบัตร',
                       'หลักทรัพย์และตลาดหลักทรัพย์',
+                      'ประมวลรัษฎากร',
                       'ศุลกากร',
-                      'ภาษีสรรพสามิต',
+                      'ภาษีสรรพษามิต',
                       'การกระทำความผิดเกี่ยวกับคอมพิวเตอร์',
                       'การประกอบธุรกิจของคนต่างด้าว',
-                      'การค้ามนุษย์',
+                      'การป้องกันและปราบปรามการค้ามนุษย์',
                       'แร่',
                       'ธุรกิจสถาบันการเงิน',
                       'วัตถุอันตราย',
                       'การสงวนและคุ้มครองสัตว์ป่า',
                       'ป่าไม้',
                       'ป่าสงวนแห่งชาติ',
-                      'อุทยานแห่งชาติ'
+                      'อุทยานแห่งชาติ',
+                      'ประมวลกฎหมายที่ดิน',
+                      'ประมวลกฎหมายยาเสพติด',
+                      'ประมวลกฎหมายอาญาเฉพาะที่เกี่ยวกับสื่อลามกอนาจารเด็ก',
+                      'เครื่องสำอาง'
                     ].map<DropdownMenuItem<String>>((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
                         child: Text(
                           value,
-                          style: const TextStyle(fontSize: 14),
+                          style: const TextStyle(fontSize: 11),
                         ),
                       );
                     }).toList(),
@@ -849,37 +858,42 @@ class _FormcluesState extends State<Formclues> {
                   height: 10,
                   color: Colors.indigo,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
+                // Row(
+                //   children: [
+                //     const Icon(
+                //       Icons.location_searching_outlined,
+                //       size: 35,
+                //     ),
+                //     const SizedBox(
+                //       width: 10,
+                //     ),
+                //     Column(
+                //       crossAxisAlignment: CrossAxisAlignment.start,
+                //       mainAxisAlignment: MainAxisAlignment.start,
+                //       children: [
+                //         const Text('ที่อยู่'),
+                //         SizedBox(
+                //             width: MediaQuery.of(context).size.width * 0.6,
+                //             child: Text(': ${addressController.text}')),
+                //       ],
+                //     ),
+                //   ],
+                // ),
+                // const SizedBox(
+                //   height: 20,
+                // ),
                 Row(
                   children: [
                     const Icon(
                       Icons.location_searching_outlined,
                       size: 35,
                     ),
-                    SizedBox(width: 10,),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        const Text('ที่อยู่'),
-                        SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.6,
-                            child: Text(': ${addressController.text}')),
-                      ],
+                    const SizedBox(
+                      width: 10,
                     ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  children: [
-                    const Icon(
-                      Icons.location_on_outlined,
-                      size: 35,
-                    ), SizedBox(width: 10,),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -888,7 +902,7 @@ class _FormcluesState extends State<Formclues> {
                         SizedBox(
                             width: MediaQuery.of(context).size.width * 0.6,
                             child: Text(
-                                ': ละติจูดที่ $_lat\n: ลองติจูดที่ $_long')),
+                                ': ${addressController.text}\n: ละติจูดที่ $_lat\n: ลองติจูดที่ $_long: ')),
                       ],
                     ),
                   ],
@@ -903,7 +917,10 @@ class _FormcluesState extends State<Formclues> {
                         const Icon(
                           Icons.date_range_rounded,
                           size: 35,
-                        ), SizedBox(width: 10,),
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -918,7 +935,10 @@ class _FormcluesState extends State<Formclues> {
                         const Icon(
                           Icons.timelapse_rounded,
                           size: 35,
-                        ), SizedBox(width: 10,),
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -939,7 +959,10 @@ class _FormcluesState extends State<Formclues> {
                     const Icon(
                       Icons.view_comfy_alt_outlined,
                       size: 35,
-                    ), SizedBox(width: 10,),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -961,7 +984,10 @@ class _FormcluesState extends State<Formclues> {
                     const Icon(
                       Icons.description_outlined,
                       size: 35,
-                    ), SizedBox(width: 10,),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -983,7 +1009,10 @@ class _FormcluesState extends State<Formclues> {
                     const Icon(
                       Icons.api_outlined,
                       size: 35,
-                    ), SizedBox(width: 10,),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -1006,7 +1035,11 @@ class _FormcluesState extends State<Formclues> {
                     const Icon(
                       Icons.person_pin_outlined,
                       size: 35,
-                    ), SizedBox(width: 10,),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -1014,6 +1047,7 @@ class _FormcluesState extends State<Formclues> {
                         const Text('ผู้เเจ้งเบาะเเส'),
                         SizedBox(
                           width: MediaQuery.of(context).size.width * 0.7,
+            
                           child: Text(': ${nameController.text}'),
                         ),
                         SizedBox(
@@ -1037,7 +1071,6 @@ class _FormcluesState extends State<Formclues> {
                     ),
                   ),
                 ),
-                
               ],
             ))
       ];
@@ -1055,8 +1088,6 @@ class _FormcluesState extends State<Formclues> {
                 const Color.fromARGB(255, 26, 62, 145)),
           ),
           onPressed: () async {
-            // if (formKey.currentState!.validate()) {
-            // formKey.currentState!.save();
             await _cluesdataCollection.add({
               "Location": locationController.text,
               "Date": dateController.text,
@@ -1066,7 +1097,7 @@ class _FormcluesState extends State<Formclues> {
               "Name": nameController.text,
               "Phone": phoneController.text,
               "Point": pointController.text,
-              "Address": addressController.text
+              "Address": addressController.text,
             });
             AwesomeDialog(
                 context: context,

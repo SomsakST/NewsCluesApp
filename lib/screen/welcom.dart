@@ -79,7 +79,7 @@ SizedBox welcomebutton(BuildContext context) {
     height: 50,
     child: ElevatedButton(
       child: const Text(
-        "เเจ้งเบาะเเส",
+        "กดเเจ้งเบาะเเสที่นี้",
         style: TextStyle(
           fontSize: 20.0,
           color: Color.fromARGB(255, 26, 62, 145),

@@ -78,6 +78,33 @@ class _OnboardingScreen2State extends State<OnboardingScreen2> {
               children: _buildIndicator(),
             ),
           ),
+          Positioned(
+            bottom: 0.5,
+            right: 20,
+            child: Container(
+              // ignore: sort_child_properties_last
+              child: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      if (currentIndex < 8) {
+                        currentIndex++;
+                        if (currentIndex < 8) {
+                          _pageController.nextPage(
+                              duration: const Duration(milliseconds: 300),
+                              curve: Curves.easeIn);
+                        }
+                      }
+                    });
+                  },
+                  icon: const Icon(
+                    Icons.arrow_forward_ios,
+                    size: 24,
+                    color: Colors.white,
+                  )),
+              decoration: const BoxDecoration(
+                  shape: BoxShape.circle,  color: Color(0xFF244684),),
+            ),
+          ),
         ],
       ),
     );

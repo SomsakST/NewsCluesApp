@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:main_cluesnew/screen/onboarding1.dart';
 import 'package:main_cluesnew/screen/onboarding2.dart';

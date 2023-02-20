@@ -10,16 +10,18 @@ class Cluesdata {
   String Phone;
   String Point;
   String Address;
+  String Note;
 
-  Cluesdata({
-    required this.Location,
-    required this.Date,
-    required this.Time,
-    required this.Type,
-    required this.Details,
-    required this.Name,
-    required this.Phone,
-    required this.Point,
-    required this.Address
-  });
+  Cluesdata(
+      {required this.Location,
+      required this.Date,
+      required this.Time,
+      required this.Type,
+      required this.Details,
+      required this.Name,
+      required this.Phone,
+      required this.Point,
+      required this.Address,
+      required this.Note,
+      });
 }
