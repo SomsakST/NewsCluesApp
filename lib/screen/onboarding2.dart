@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:main_cluesnew/BottomBar/HomeBar.dart';
+
 import 'package:main_cluesnew/model/constants.dart';
-import 'package:main_cluesnew/screen/welcom.dart';
+
 
 class OnboardingScreen2 extends StatefulWidget {
   const OnboardingScreen2({Key? key}) : super(key: key);

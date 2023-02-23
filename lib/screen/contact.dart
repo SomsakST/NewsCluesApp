@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:main_cluesnew/common/my_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactDsi extends StatefulWidget {
@@ -18,28 +19,35 @@ class _ContactDsiState extends State<ContactDsi> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: MyColors.white,
         body: SingleChildScrollView(
           child: Container(
             width: double.infinity,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('images/Newclues.8.png'),
-                alignment: Alignment.topCenter,
-                fit: BoxFit.fitWidth,
-              ),
-            ),
+            // decoration: const BoxDecoration(
+            //   image: DecorationImage(
+            //     image: AssetImage('images/Newclues.8.png'),
+            //     alignment: Alignment.topCenter,
+            //     fit: BoxFit.fitWidth,
+            //   ),
+            // ),
             child: Column(
               children: <Widget>[
-                const SizedBox(
-                  height:109,
-                ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.28,
+                height: 40,
+              ),
+              Image.asset(
+                "images/1.1.png",
+                scale: 4.5,
+              ), SizedBox(
+                height: 20,
+              ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.0,
                 ),
                 Container(
                   width: double.infinity,
                   decoration: const BoxDecoration(
-                    color: Color(0xFF244684),
+                    color: MyColors.nBlue,
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(32),
                     ),
@@ -54,8 +62,8 @@ class _ContactDsiState extends State<ContactDsi> {
                         ),
                         Center(
                           child: Image.asset(
-                            "images/Newclues.4.png",
-                            scale: 2,
+                            "images/Newclues.5.1.png",
+                            scale: 10,
                           ),
                         ),
                         const SizedBox(

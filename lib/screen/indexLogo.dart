@@ -3,8 +3,10 @@
 import 'dart:async' show Timer;
 
 import 'package:flutter/material.dart';
-import 'package:main_cluesnew/BottomBar/HomeBar.dart';
-import 'package:main_cluesnew/screen/welcom.dart';
+import 'package:main_cluesnew/BottomBar/BARHOME.dart';
+import 'package:main_cluesnew/common/my_colors.dart';
+
+
 
 class indexLogo extends StatefulWidget {
   const indexLogo({super.key});
@@ -19,22 +21,23 @@ class _indexLogoState extends State<indexLogo> {
     Timer(
         const Duration(seconds: 5),
         () => Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (BuildContext context) => Nevbar())));
+            MaterialPageRoute(builder: (BuildContext context) => HomeBar())));
 // OnboardingScreen()
     return Scaffold(
+      backgroundColor: MyColors.nBlue,
         body: SafeArea(
       child: Center(
         child: Container(
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-            image: AssetImage('images/Newclues.6.png'),
-            fit: BoxFit.cover,
-          )),
+          // decoration: const BoxDecoration(
+          //     image: DecorationImage(
+          //   image: AssetImage('images/Newclues.6.png'),
+          //   fit: BoxFit.cover,
+          // )),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset('images/Newclues.3.png', scale:1.5),
+                Image.asset('images/Newclues.5.1.png', scale:8),
               ],
             ),
           ),
@@ -42,22 +45,6 @@ class _indexLogoState extends State<indexLogo> {
       ),
     ));
 
-    // Scaffold(
-    //   backgroundColor: const Color(0xFF244684),
-    //   body: Center(
-    //     child: Center(
-    //       child: Column(
-    //         mainAxisAlignment: MainAxisAlignment.center,
-    //         children: [
-    //           Image.asset('images/Newclues.4.png',  scale: 1.5,),
-    //           // const Text(
-    //           //   "กองเทคโนโลยีเเละศูนย์ข้อมูลการตรวจสอบ",
-    //           //   style: TextStyle(fontSize: 10, color: Colors.white),
-    //           // )
-    //         ],
-    //       ),
-    //     ),
-    //   ),
-    // );
+   
   }
 }

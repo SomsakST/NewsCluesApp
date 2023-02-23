@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:main_cluesnew/BottomBar/HomeBar.dart';
+
 import 'package:main_cluesnew/model/constants.dart';
-import 'package:main_cluesnew/screen/welcom.dart';
+
 
 class OnboardingScreen1 extends StatefulWidget {
   const OnboardingScreen1({Key? key}) : super(key: key);
@@ -147,7 +147,7 @@ class createPage extends StatelessWidget {
             child: Image.asset(image),
           ),
           const SizedBox(
-            height: 35,
+            height: 10,
           ),
         ],
       ),
