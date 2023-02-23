@@ -50,7 +50,7 @@ class _FormcluesState extends State<Formclues> {
   AmphureDao? amphureSelected;
   DistrictDao? districtSelected;
   String list = "";
-  String address = "";
+  String addresspmd = "";
   String province = "";
 
 
@@ -186,6 +186,7 @@ class _FormcluesState extends State<Formclues> {
                 // }
                 // print("==== ${currentStep}");
                 if (isLastStep) {
+                     
                   setState(() {
                     isCompleted = true;
                   });
@@ -194,6 +195,9 @@ class _FormcluesState extends State<Formclues> {
                     if (isDetailComplete()) {
                       setState(() {
                         currentStep += 1;
+                      }); 
+                      setState(() {
+                        addresspmd =' จังหวัด: ${provinceSelected!.nameTh} อำเภอ: ${amphureSelected!.nameTh} ตำบล: ${districtSelected!.nameTh}';
                       });
                     }
                   } else {
@@ -584,15 +588,15 @@ class _FormcluesState extends State<Formclues> {
 
 
 
-              TextButton(
-                    onPressed: () {
-                      setState(() {
-                        address = 'จังหวัด:${provinceSelected!.nameTh},อำเภอ:${amphureSelected!.nameTh},ตำบล:${districtSelected!.nameTh}';
-                      });
-                    },
-                    child: const Text("Print Data")
-                    ),
-                Text('${amphureSelected!.nameTh}'),
+              // TextButton(
+              //       onPressed: () {
+              //         setState(() {
+              //           address = 'จังหวัด:${provinceSelected!.nameTh},อำเภอ:${amphureSelected!.nameTh},ตำบล:${districtSelected!.nameTh}';
+              //         });
+              //       },
+              //       child: const Text("Print Data")
+              //       ),
+                
 
 
 
@@ -1169,7 +1173,7 @@ class _FormcluesState extends State<Formclues> {
                         SizedBox(
                             width: MediaQuery.of(context).size.width * 0.6,
                             child: Text(
-                                ': ${addressController.text}\n: ละติจูดที่ $_lat\n: ลองติจูดที่ $_long: ')),
+                                ': ${addressController.text} $addresspmd  \n: ละติจูดที่ $_lat\n: ลองติจูดที่ $_long: ', )),
                       ],
                     ),
                   ],
@@ -1362,7 +1366,7 @@ class _FormcluesState extends State<Formclues> {
               "Name": nameController.text,
               "Phone": phoneController.text,
               "Point": pointController.text,
-              "Address": addressController.text,
+              "Address": addressController.text + addresspmd,
             });
             AwesomeDialog(
                 context: context,
