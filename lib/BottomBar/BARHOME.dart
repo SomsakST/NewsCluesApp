@@ -9,7 +9,6 @@ import 'package:main_cluesnew/screen/DATAcommunicate.dart';
 import 'package:main_cluesnew/screen/Welclues.dart';
 import 'package:main_cluesnew/screen/contact.dart';
 
-
 class HomeBar extends StatefulWidget {
   HomeBar({
     Key? key,
@@ -35,22 +34,22 @@ class _HomeBarState extends State<HomeBar> {
 
   int selectedPos = 1;
 
-  double bottomNavBarHeight = 55;
+  double bottomNavBarHeight = 50;
 
   List<TabItem> tabItems = List.of([
     TabItem(
       Icons.home,
-      "ข้อมูลเพิ่มเติม",
+      "",
       MyColors.nBlue,
     ),
     TabItem(
       Icons.search,
-      "เเจ้งเบาะเเส",
-      MyColors.nOrange,
+      "",
+      MyColors.nBlue,
     ),
     TabItem(
       Icons.notifications,
-      "ติดต่อ",
+      "",
       MyColors.nBlue,
     ),
   ]);
@@ -79,7 +78,7 @@ class _HomeBarState extends State<HomeBar> {
     String slogan;
     switch (selectedPos) {
       case 0:
-        _child = DATAcommunicate();
+        _child = const DATAcommunicate();
         break;
       case 1:
         _child = const Welclues();
@@ -99,13 +98,13 @@ class _HomeBarState extends State<HomeBar> {
         color: selectedColor,
         child: Center(child: _child),
       ),
-      onTap: () {
-        if (_navigationController.value == tabItems.length - 1) {
-          _navigationController.value = 0;
-        } else {
-          _navigationController.value = _navigationController.value! + 1;
-        }
-      },
+      // onTap: () {
+      //   if (_navigationController.value == tabItems.length - 1) {
+      //     _navigationController.value = 0;
+      //   } else {
+      //     _navigationController.value = _navigationController.value! + 1;
+      //   }
+      // },
     );
   }
 
@@ -116,7 +115,7 @@ class _HomeBarState extends State<HomeBar> {
       selectedPos: selectedPos,
       barHeight: bottomNavBarHeight,
       // use either barBackgroundColor or barBackgroundGradient to have a gradient on bar background
-      barBackgroundColor: Colors.white,
+      barBackgroundColor: MyColors.nWhite,
       // barBackgroundGradient: LinearGradient(
       //   begin: Alignment.bottomCenter,
       //   end: Alignment.topCenter,

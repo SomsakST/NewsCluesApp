@@ -52,14 +52,14 @@ class _OnboardingScreen1State extends State<OnboardingScreen1> {
             ],
           ),
           Positioned(
-            bottom: 20,
+            bottom: 30,
             left: 20,
             child: Row(
               children: _buildIndicator(),
             ),
           ),
            Positioned(
-            bottom: 0.5,
+            bottom:15,
             right: 20,
             child: Container(
               // ignore: sort_child_properties_last
@@ -142,7 +142,7 @@ class createPage extends StatelessWidget {
           SizedBox(
             // height: 670,
             // width: 380,
-            height: 600,
+            height: 700,
             width: 500,
             child: Image.asset(image),
           ),

@@ -25,21 +25,21 @@ class _ContactDsiState extends State<ContactDsi> {
             width: double.infinity,
             // decoration: const BoxDecoration(
             //   image: DecorationImage(
-            //     image: AssetImage('images/Newclues.8.png'),
+            //     image: AssetImage('images/Newclues.7.png'),
             //     alignment: Alignment.topCenter,
-            //     fit: BoxFit.fitWidth,
+            //     fit: BoxFit.cover,
             //   ),
             // ),
             child: Column(
               children: <Widget>[
                 SizedBox(
-                height: 40,
+                height: 53,
               ),
               Image.asset(
                 "images/1.1.png",
-                scale: 4.5,
+                scale: 6,
               ), SizedBox(
-                height: 20,
+                height: 53,
               ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.0,

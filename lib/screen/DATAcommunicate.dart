@@ -45,7 +45,7 @@ class _DATAcommunicateState extends State<DATAcommunicate> {
                 ),
                 Image.asset(
                   "images/1.4.png",
-                  scale: 5,
+                  scale: 6,
                 ),
                 const SizedBox(
                   height: 20,
@@ -59,7 +59,7 @@ class _DATAcommunicateState extends State<DATAcommunicate> {
                       fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 
                 Onboaring(context),
@@ -78,15 +78,15 @@ class _DATAcommunicateState extends State<DATAcommunicate> {
         padding: const EdgeInsets.all(10),
         child: StaggeredGrid.count(
           crossAxisCount: 1,
-          mainAxisSpacing: 20,
-          crossAxisSpacing: 20,
+          mainAxisSpacing: 15,
+          crossAxisSpacing: 15,
           children: [
             CustomCard(
               onTap: () {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const barcommunicate()));
+                        builder: (context) => const OnboardingScreen1()));
               },
               shadow: true,
               shadowColor: MyColors.nBlack,
@@ -115,16 +115,17 @@ class _DATAcommunicateState extends State<DATAcommunicate> {
                         width: 15,
                       ),
                       Text(
-                        "กรมสอบสวนตดีพิเศษ",
+                        "กรมสอบสวนคดีพิเศษ",
                         style: TextStyle(
+                          
                             color: MyColors.blackText,
-                            fontSize: MyFontSize.medium1,
+                            fontSize: MyFontSize.large1,
                             fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
                   const SizedBox(
-                    height: 10,
+                    height: 5,
                   ),
                   Center(
                     child: Text(
@@ -143,7 +144,7 @@ class _DATAcommunicateState extends State<DATAcommunicate> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const barcommunicate1()));
+                        builder: (context) => const OnboardingScreen2()));
               },
               shadow: true,
               shadowColor: MyColors.nBlack,
@@ -173,12 +174,12 @@ class _DATAcommunicateState extends State<DATAcommunicate> {
                     "เตือนภัย",
                     style: TextStyle(
                         color: MyColors.blackText,
-                        fontSize: MyFontSize.medium1,
+                        fontSize: MyFontSize.large1,
                         fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
+                  // const SizedBox(
+                  //   height: 10,
+                  // ),
                 ],
               ),
             ),

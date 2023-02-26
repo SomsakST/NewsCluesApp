@@ -37,7 +37,8 @@ class _barcommunicateState extends State<barcommunicate> {
                     unselectedLabelColor: Colors.black,
                     tabs: const [
                       Tab(
-                        text: 'กรมสอบสวนคดีพิเศษ',
+                        text: '',
+                        // text: 'กรมสอบสวนคดีพิเศษ',
                       ),
                       
                     ],

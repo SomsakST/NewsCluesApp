@@ -14,6 +14,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:main_cluesnew/BottomBar/BARHOME.dart';
+import 'package:main_cluesnew/common/my_colors.dart';
 
 import 'package:main_cluesnew/model/datadetail.dart';
 import 'package:main_cluesnew/model/Type.dart';
@@ -321,7 +322,7 @@ class _FormcluesState extends State<Formclues> {
                 const SizedBox(
                   height: 10,
                 ),
-                const Text("กรอกข้อมูล ( หมู่บ้าน,ซอย,ตำบล,อำเภอ,จังหวัด ) "),
+                // const Text("กรอกข้อมูล ( หมู่บ้าน,ซอย,ตำบล,อำเภอ,จังหวัด ) "),
                 const SizedBox(height: 8),
                 TextFormField(
                   controller: addressController,
@@ -366,17 +367,17 @@ class _FormcluesState extends State<Formclues> {
                   // ignore: use_build_context_synchronously
                   ProvinceDao province = await ChooseProvinceDialog.show(context,
                     listProvinces: list,
-                    colorBackgroundHeader: const Color.fromARGB(255, 186, 104, 200),
-                    colorLineHeader: const Color.fromARGB(255, 156, 39, 176),
+                    colorBackgroundHeader: MyColors.nBlue,
+                    colorLineHeader: MyColors.nOrange,
                     styleTitle: const TextStyle(fontSize: 18,),
                     styleSubTitle: TextStyle(fontSize: 14, 
-                                       color: Colors.grey[400]),
+                                       color: Color.fromARGB(255, 255, 255, 255)),
                     styleTextNoData: const TextStyle(),
                     styleTextSearchHint: const TextStyle(),
                     styleTextSearch: const TextStyle(), 
-                    colorBackgroundDialog: const Color.fromARGB(255, 185, 182, 182), 
-                    colorBackgroundSearch: const Color.fromARGB(255, 185, 182, 182), 
-                    colorLine: const Color.fromARGB(255, 185, 182, 182),
+                    colorBackgroundDialog: Color.fromARGB(255, 255, 255, 255), 
+                    colorBackgroundSearch: Color.fromARGB(255, 255, 255, 255), 
+                    colorLine: Color.fromARGB(255, 255, 255, 255),
                     );
                     
                   setState(() {
@@ -387,7 +388,7 @@ class _FormcluesState extends State<Formclues> {
                 child: Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: BorderRadius.circular(32),
                       color: Colors.white,
                       // ignore: prefer_const_literals_to_create_immutables
                       boxShadow: [
@@ -431,7 +432,7 @@ class _FormcluesState extends State<Formclues> {
                 ),
               ),
                 const SizedBox(
-                  height: 20,
+                  height: 8,
                 ),
                 //ฐานข้อมูลอำเภอ
                 GestureDetector(
@@ -462,7 +463,7 @@ class _FormcluesState extends State<Formclues> {
                 child: Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: BorderRadius.circular(32),
                       color: Colors.white,
                       // ignore: prefer_const_literals_to_create_immutables
                       boxShadow: [
@@ -538,7 +539,7 @@ class _FormcluesState extends State<Formclues> {
                 child: Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: BorderRadius.circular(32),
                       color: Colors.white,
                       // ignore: prefer_const_literals_to_create_immutables
                       boxShadow: [
@@ -582,7 +583,7 @@ class _FormcluesState extends State<Formclues> {
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 15,
               ),
 
 
@@ -680,7 +681,7 @@ class _FormcluesState extends State<Formclues> {
                     Icons.search_outlined,
                     size: 25,
                   ),
-                  label: const Text("ค้นหาเเละบันทึกสถานที่"),
+                  label: const Text("บันทึกสถานที่"),
                   onPressed: () {
                     mapController.animateCamera(CameraUpdate.newLatLngZoom(
                         LatLng(position.latitude, position.longitude), 18));
@@ -690,11 +691,11 @@ class _FormcluesState extends State<Formclues> {
                       locationController.text = "$_lat,$_long";
                     });
                     Fluttertoast.showToast(
-                      msg: "ค้นพบเเละบันทึกสถานที่เรียบร้อยแล้ว",
+                      msg: "บันทึกสถานที่เรียบร้อยแล้ว",
                       toastLength: Toast.LENGTH_SHORT,
                       gravity: ToastGravity.CENTER,
                       timeInSecForIosWeb: 1,
-                      backgroundColor: const Color(0xFF244684),
+                      backgroundColor: MyColors.nOrange,
                       textColor: Colors.white,
                       fontSize: 15,
                     );
@@ -737,7 +738,16 @@ class _FormcluesState extends State<Formclues> {
                   const SizedBox(
                     height: 10,
                   ),
-                  const Text("วัน-เดิอน-ปี เเละ เวลา ที่พบการกระทำผิด"),
+                  Row(
+                    children: [
+                      const Text("วัน-เดิอน-ปี เเละ เวลา ที่พบการกระทำผิด"),
+                      const Text("*",
+                      style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 15.0,
+                          fontWeight: FontWeight.bold)),
+                    ],
+                  ),
                   const SizedBox(height: 8),
                   Row(
                     children: [
@@ -846,7 +856,16 @@ class _FormcluesState extends State<Formclues> {
                   const SizedBox(
                     height: 10,
                   ),
-                  const Text("ประเภทของคดี"),
+                  Row(
+                    children: [
+                      const Text("ประเภทของคดี"),
+                      const Text("*",
+                      style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 15.0,
+                          fontWeight: FontWeight.bold)),
+                    ],
+                  ),
                   const SizedBox(height: 8),
                   DropdownButtonFormField(
                     decoration: const InputDecoration(
@@ -923,7 +942,7 @@ class _FormcluesState extends State<Formclues> {
                         value: value,
                         child: Text(
                           value,
-                          style: const TextStyle(fontSize: 11),
+                          style: const TextStyle(fontSize: 10),
                         ),
                       );
                     }).toList(),
@@ -931,7 +950,16 @@ class _FormcluesState extends State<Formclues> {
                   const SizedBox(
                     height: 10,
                   ),
-                  const Text("รายละเอียดเบาะแส/การกระทำผิด"),
+                  Row(
+                    children: [
+                      const Text("รายละเอียดเบาะแส/การกระทำผิด"),
+                      const Text("*",
+                      style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 15.0,
+                          fontWeight: FontWeight.bold)),
+                    ],
+                  ),
                   const SizedBox(height: 8),
                   TextFormField(
                     controller: detaillsController,
@@ -974,7 +1002,16 @@ class _FormcluesState extends State<Formclues> {
                   const SizedBox(
                     height: 10,
                   ),
-                  const Text("จุดประสงค์ที่ต้องการให้ DSI ช่วยเหลือ/ดำเนินคดี"),
+                  Row(
+                    children: [
+                      const Text("จุดประสงค์ที่ต้องการให้ DSI ช่วยเหลือ/ดำเนินคดี"),
+                      const Text("*",
+                      style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 15.0,
+                          fontWeight: FontWeight.bold)),
+                    ],
+                  ),
                   const SizedBox(height: 8),
                   TextFormField(
                     controller: pointController,
@@ -1022,11 +1059,11 @@ class _FormcluesState extends State<Formclues> {
                           color: Color.fromARGB(255, 23, 21, 75),
                           fontSize: 30.0,
                           fontWeight: FontWeight.bold)),
-                  const Text("*หากท่านไม่ประสงค์เเสดงตัวตนไม่ต้องกรอกข้อมูล*",
-                      style: TextStyle(
-                          color: Colors.red,
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.bold)),
+                  // const Text("*ไม่บังคับ*",
+                  //     style: TextStyle(
+                  //         color: Colors.red,
+                  //         fontSize: 15.0,
+                  //         fontWeight: FontWeight.bold)),
                   const Divider(
                     height: 10,
                     color: Colors.indigo,

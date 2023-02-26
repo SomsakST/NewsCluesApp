@@ -24,6 +24,7 @@ class _WelcluesState extends State<Welclues> {
         backgroundColor: MyColors.nWhite,
       body: SingleChildScrollView(
         child: Container(
+          width: double.infinity,
           // decoration: const BoxDecoration(
           //     image: DecorationImage(
           //   image: AssetImage('images/Newclues.7.png'),
@@ -31,18 +32,18 @@ class _WelcluesState extends State<Welclues> {
           // )),
           child: Column(
             children: [
-             SizedBox(
+             const SizedBox(
                 height: 60,
               ),
               Image.asset(
                 "images/1.2.png",
                 scale: 4,
-              ), SizedBox(
+              ), const SizedBox(
                 height: 40,
               ),
               Card(
                 color: MyColors.nWhite,
-                margin: EdgeInsets.all(10),
+                margin: const EdgeInsets.all(10),
                 elevation: 10.0,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(25.0)),
@@ -53,6 +54,7 @@ class _WelcluesState extends State<Welclues> {
                     children: [
                       Row(
                         children: [
+                          SizedBox(height: 50,),
                           Container(
                             width: 40,
                             child: ClipRRect(
@@ -74,15 +76,15 @@ class _WelcluesState extends State<Welclues> {
                                     color: MyColors.blackText,
                                     fontSize: MyFontSize.small2),
                               ),
-                              const SizedBox(height: 3),
+                              // const SizedBox(height: 3),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Icon(
-                                    Icons.circle_outlined,
-                                    size: 10,
-                                    color: MyColors.blackText,
-                                  ),
+                                  // Icon(
+                                  //   Icons.circle_outlined,
+                                  //   size: 10,
+                                  //   color: MyColors.blackText,
+                                  // ),
                                   const SizedBox(
                                     width: 10,
                                   ),
@@ -95,11 +97,11 @@ class _WelcluesState extends State<Welclues> {
                                   const SizedBox(
                                     width: 5,
                                   ),
-                                  Icon(
-                                    Icons.circle_outlined,
-                                    size: 10,
-                                    color: MyColors.blackText,
-                                  ),
+                                  // Icon(
+                                  //   Icons.circle_outlined,
+                                  //   size: 10,
+                                  //   color: MyColors.blackText,
+                                  // ),
                                 ],
                               ),
                             ],
@@ -119,14 +121,14 @@ class _WelcluesState extends State<Welclues> {
                         ],
                       ),
                       const SizedBox(
-                        height: 20,
+                        height:10,
                       ),
-                      Text(
+                      const Text(
                         "เบาะเเสทางการข่าว",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: MyColors.nBlue,
-                            fontSize: 40,
+                            fontSize: 35,
                             fontWeight: FontWeight.bold),
                       ),
                       Text(
@@ -137,21 +139,13 @@ class _WelcluesState extends State<Welclues> {
                           fontSize: MyFontSize.medium2,
                         ),
                       ),
-                      const SizedBox(height: 20),
-                      const SizedBox(height: 10), welcomebutton(context),
+                      const SizedBox(height: 30),
+                     welcomebutton(context),
                     ],
                   ),
                 ),
               ),
-              SizedBox(
-                height: 20,
-              ),
               
-             
-             
-              SizedBox(
-                height: 20,
-              ),
             ],
           ),
         ),
