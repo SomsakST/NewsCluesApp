@@ -163,10 +163,10 @@ class _ChooseProvinceDialogState extends State<ChooseProvinceDialog> {
                   const SizedBox(
                     height: 4,
                   ),
-                  Text(
-                    province.nameEn,
-                    style: const TextStyle(fontSize: 14, color: Colors.grey),
-                  ),
+                  // Text(
+                  //   province.nameEn,
+                  //   style: const TextStyle(fontSize: 14, color: Colors.grey),
+                  // ),
                 ],
               ),
             ),

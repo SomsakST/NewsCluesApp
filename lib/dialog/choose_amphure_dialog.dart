@@ -162,10 +162,10 @@ class _ChooseAmphureDialogState extends State<ChooseAmphureDialog> {
                   const SizedBox(
                     height: 4,
                   ),
-                  Text(
-                    amphure.nameEn,
-                    style: const TextStyle(fontSize: 14, color: Colors.grey),
-                  ),
+                  // Text(
+                  //   amphure.nameEn,
+                  //   style: const TextStyle(fontSize: 14, color: Colors.grey),
+                  // ),
                 ],
               ),
             ),

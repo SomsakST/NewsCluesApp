@@ -30,7 +30,6 @@ import 'package:main_cluesnew/provider/amphure_provider.dart';
 import 'package:main_cluesnew/provider/district_provider.dart';
 
 class Formclues extends StatefulWidget {
-
   const Formclues({Key? key}) : super(key: key);
   @override
   State<Formclues> createState() => _FormcluesState();
@@ -53,7 +52,6 @@ class _FormcluesState extends State<Formclues> {
   String list = "";
   String addresspmd = "";
   String province = "";
-
 
   String dropdownValue = '';
   List<Type> dropdownItem = Type.getType();
@@ -81,7 +79,7 @@ class _FormcluesState extends State<Formclues> {
   signOut() async {
     await auth.signOut();
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => HomeBar()));
+        context, MaterialPageRoute(builder: (context) => const HomeBar()));
   }
 
 // กำหนดการตั้งค่า Firebase.......................................................................
@@ -187,7 +185,6 @@ class _FormcluesState extends State<Formclues> {
                 // }
                 // print("==== ${currentStep}");
                 if (isLastStep) {
-                     
                   setState(() {
                     isCompleted = true;
                   });
@@ -196,9 +193,10 @@ class _FormcluesState extends State<Formclues> {
                     if (isDetailComplete()) {
                       setState(() {
                         currentStep += 1;
-                      }); 
+                      });
                       setState(() {
-                        addresspmd =' จังหวัด: ${provinceSelected!.nameTh} อำเภอ: ${amphureSelected!.nameTh} ตำบล: ${districtSelected!.nameTh}';
+                        addresspmd =
+                            ' จังหวัด: ${provinceSelected!.nameTh} อำเภอ: ${amphureSelected!.nameTh} ตำบล: ${districtSelected!.nameTh}';
                       });
                     }
                   } else {
@@ -272,9 +270,9 @@ class _FormcluesState extends State<Formclues> {
     // print("-------" + currentStep.toString());
     if (currentStep == 1) {
       //check sender fields
-      if (pointController.text.isEmpty || pointController.text.isEmpty) {
-        return false;
-      }
+      // if (pointController.text.isEmpty || pointController.text.isEmpty) {
+      //   return false;
+      // }
       if (detaillsController.text.isEmpty || detaillsController.text.isEmpty) {
         return false;
       }
@@ -361,247 +359,253 @@ class _FormcluesState extends State<Formclues> {
                 ),
                 //ฐานข้อมูลจังหวัด
                 GestureDetector(
-                onTap: () async {
-                  var list = await ProvinceProvider.all();
+                  onTap: () async {
+                    var list = await ProvinceProvider.all();
 
-                  // ignore: use_build_context_synchronously
-                  ProvinceDao province = await ChooseProvinceDialog.show(context,
-                    listProvinces: list,
-                    colorBackgroundHeader: MyColors.nBlue,
-                    colorLineHeader: MyColors.nOrange,
-                    styleTitle: const TextStyle(fontSize: 18,),
-                    styleSubTitle: TextStyle(fontSize: 14, 
-                                       color: Color.fromARGB(255, 255, 255, 255)),
-                    styleTextNoData: const TextStyle(),
-                    styleTextSearchHint: const TextStyle(),
-                    styleTextSearch: const TextStyle(), 
-                    colorBackgroundDialog: Color.fromARGB(255, 255, 255, 255), 
-                    colorBackgroundSearch: Color.fromARGB(255, 255, 255, 255), 
-                    colorLine: Color.fromARGB(255, 255, 255, 255),
-                    );
-                    
-                  setState(() {
-                    provinceSelected = province;
-                    
-                  });
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(32),
-                      color: Colors.white,
-                      // ignore: prefer_const_literals_to_create_immutables
-                      boxShadow: [
-                        // ignore: prefer_const_constructors
-                        BoxShadow(
-                            color: const Color.fromARGB(255, 224, 224, 224),
-                            blurRadius: 80,
-                            offset: const Offset(0, 10))
-                      ]),
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              provinceSelected == null
-                                  ? "เลือกจังหวัด"
-                                  : provinceSelected!.nameTh,
-                              style: const TextStyle(fontSize: 20),
-                            ),
-                            const SizedBox(
-                              height: 4,
-                            ),
-                            Text(
-                              provinceSelected == null
-                                  ? ""
-                                  : provinceSelected!.nameEn,
-                              style:
-                                  const TextStyle(fontSize: 14, color: Colors.grey),
-                            ),
-                          ],
-                        ),
+                    // ignore: use_build_context_synchronously
+                    ProvinceDao province = await ChooseProvinceDialog.show(
+                      context,
+                      listProvinces: list,
+                      colorBackgroundHeader: MyColors.nBlue,
+                      colorLineHeader: MyColors.nOrange,
+                      styleTitle: const TextStyle(
+                        fontSize: 18,
                       ),
-                      Icon(
-                        Icons.arrow_drop_down,
-                        color: Colors.grey[600],
-                      )
-                    ],
+                      styleSubTitle: const TextStyle(
+                          fontSize: 14,
+                          color: Color.fromARGB(255, 255, 255, 255)),
+                      styleTextNoData: const TextStyle(),
+                      styleTextSearchHint: const TextStyle(),
+                      styleTextSearch: const TextStyle(),
+                      colorBackgroundDialog:
+                          const Color.fromARGB(255, 255, 255, 255),
+                      colorBackgroundSearch:
+                          const Color.fromARGB(255, 255, 255, 255),
+                      colorLine: const Color.fromARGB(255, 255, 255, 255),
+                    );
+
+                    setState(() {
+                      provinceSelected = province;
+                    });
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(32),
+                        color: Colors.white,
+                        // ignore: prefer_const_literals_to_create_immutables
+                        boxShadow: [
+                          // ignore: prefer_const_constructors
+                          BoxShadow(
+                              color: const Color.fromARGB(255, 224, 224, 224),
+                              blurRadius: 80,
+                              offset: const Offset(0, 10))
+                        ]),
+                    child: Row(
+                      children: <Widget>[
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                provinceSelected == null
+                                    ? "เลือกจังหวัด"
+                                    : provinceSelected!.nameTh,
+                                style: const TextStyle(fontSize: 20),
+                              ),
+                              const SizedBox(
+                                height: 4,
+                              ),
+                              Text(
+                                provinceSelected == null
+                                    ? ""
+                                    : provinceSelected!.nameEn,
+                                style: const TextStyle(
+                                    fontSize: 14, color: Colors.grey),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Icon(
+                          Icons.arrow_drop_down,
+                          color: Colors.grey[600],
+                        )
+                      ],
+                    ),
                   ),
                 ),
-              ),
                 const SizedBox(
                   height: 8,
                 ),
                 //ฐานข้อมูลอำเภอ
                 GestureDetector(
-                onTap: () async {
-                  var list = await AmphureProvider.all();
+                  onTap: () async {
+                    var list = await AmphureProvider.all();
 
-                  // ignore: use_build_context_synchronously
-                  AmphureDao amphure = await ChooseAmphureDialog.show(context,
-                    listAmphure: list,
-                    colorBackgroundHeader: const Color.fromARGB(255, 186, 104, 200),
-                    colorLineHeader: const Color.fromARGB(255, 156, 39, 176),
-                    styleTitle: const TextStyle(fontSize: 18,),
-                    styleSubTitle: TextStyle(fontSize: 14,
-                                       color: Colors.grey[400]),
-                    styleTextNoData: const TextStyle(),
-                    styleTextSearchHint: const TextStyle(),
-                    styleTextSearch: const TextStyle(), 
-                    colorBackgroundDialog: const Color.fromARGB(255, 185, 182, 182), 
-                    colorBackgroundSearch: const Color.fromARGB(255, 185, 182, 182), 
-                    colorLine: const Color.fromARGB(255, 185, 182, 182),
-                    );
-                    
-                  setState(() {
-                    amphureSelected = amphure;
-                  });
-                    
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(32),
-                      color: Colors.white,
-                      // ignore: prefer_const_literals_to_create_immutables
-                      boxShadow: [
-                        // ignore: prefer_const_constructors
-                        BoxShadow(
-                            color: const Color.fromARGB(255, 224, 224, 224),
-                            blurRadius: 80,
-                            offset: const Offset(0, 10))
-                      ]),
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              amphureSelected == null
-                                  ? "เลือกอำเภอ"
-                                  : amphureSelected!.nameTh,
-                              style: const TextStyle(fontSize: 20),
-                            ),
-                            const SizedBox(
-                              height: 4,
-                            ),
-                            Text(
-                              amphureSelected == null
-                                  ? ""
-                                  : amphureSelected!.nameEn,
-                              style:
-                                  const TextStyle(fontSize: 14, color: Colors.grey),
-                            ),
-                          ],
-                        ),
+                    // ignore: use_build_context_synchronously
+                    AmphureDao amphure = await ChooseAmphureDialog.show(
+                      context,
+                      listAmphure: list,
+                      colorBackgroundHeader:
+                          const Color.fromARGB(255, 186, 104, 200),
+                      colorLineHeader: const Color.fromARGB(255, 156, 39, 176),
+                      styleTitle: const TextStyle(
+                        fontSize: 18,
                       ),
-                      Icon(
-                        Icons.arrow_drop_down,
-                        color: Colors.grey[600],
-                      )
-                    ],
+                      styleSubTitle:
+                          TextStyle(fontSize: 14, color: Colors.grey[400]),
+                      styleTextNoData: const TextStyle(),
+                      styleTextSearchHint: const TextStyle(),
+                      styleTextSearch: const TextStyle(),
+                      colorBackgroundDialog:
+                          const Color.fromARGB(255, 185, 182, 182),
+                      colorBackgroundSearch:
+                          const Color.fromARGB(255, 185, 182, 182),
+                      colorLine: const Color.fromARGB(255, 185, 182, 182),
+                    );
+
+                    setState(() {
+                      amphureSelected = amphure;
+                    });
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(32),
+                        color: Colors.white,
+                        // ignore: prefer_const_literals_to_create_immutables
+                        boxShadow: [
+                          // ignore: prefer_const_constructors
+                          BoxShadow(
+                              color: const Color.fromARGB(255, 224, 224, 224),
+                              blurRadius: 80,
+                              offset: const Offset(0, 10))
+                        ]),
+                    child: Row(
+                      children: <Widget>[
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                amphureSelected == null
+                                    ? "เลือกอำเภอ"
+                                    : amphureSelected!.nameTh,
+                                style: const TextStyle(fontSize: 20),
+                              ),
+                              const SizedBox(
+                                height: 4,
+                              ),
+                              Text(
+                                amphureSelected == null
+                                    ? ""
+                                    : amphureSelected!.nameEn,
+                                style: const TextStyle(
+                                    fontSize: 14, color: Colors.grey),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Icon(
+                          Icons.arrow_drop_down,
+                          color: Colors.grey[600],
+                        )
+                      ],
+                    ),
                   ),
                 ),
-              ),
-               const SizedBox(
-                height: 8,
-              ),
-              //ฐานข้อมูลตำบล
-              GestureDetector(
-                onTap: () async {
-                  var list = await DistrictProvider.all();
+                const SizedBox(
+                  height: 8,
+                ),
+                //ฐานข้อมูลตำบล
+                GestureDetector(
+                  onTap: () async {
+                    var list = await DistrictProvider.all();
 
-                  // ignore: use_build_context_synchronously
-                  DistrictDao district = await ChooseDistrictDialog.show(context,
-                    listDistrict: list,
-                    colorBackgroundHeader: const Color.fromARGB(255, 186, 104, 200),
-                    colorLineHeader: const Color.fromARGB(255, 156, 39, 176),
-                    styleTitle: const TextStyle(fontSize: 18,),
-                    styleSubTitle: TextStyle(fontSize: 14,
-                                       color: Colors.grey[400]),
-                    styleTextNoData: const TextStyle(),
-                    styleTextSearchHint: const TextStyle(),
-                    styleTextSearch: const TextStyle(), 
-                    colorBackgroundDialog: const Color.fromARGB(255, 185, 182, 182), 
-                    colorBackgroundSearch: const Color.fromARGB(255, 185, 182, 182), 
-                    colorLine: const Color.fromARGB(255, 185, 182, 182),
-                    );
-                    
-                  setState(() {
-                    districtSelected = district;
-                  });
-                    
-                },
-                
-                child: Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(32),
-                      color: Colors.white,
-                      // ignore: prefer_const_literals_to_create_immutables
-                      boxShadow: [
-                        // ignore: prefer_const_constructors
-                        BoxShadow(
-                            color: const Color.fromARGB(255, 224, 224, 224),
-                            blurRadius: 80,
-                            offset: const Offset(0, 10))
-                      ]),
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              districtSelected == null
-                                  ? "เลือกตำบล"
-                                  : districtSelected!.nameTh,
-                              style: const TextStyle(fontSize: 20),
-                            ),
-                            const SizedBox(
-                              height: 4,
-                            ),
-                            Text(
-                              districtSelected == null
-                                  ? ""
-                                  : districtSelected!.nameEn,
-                              style:
-                                  const TextStyle(fontSize: 14, color: Colors.grey),
-                            ),
-                          ],
-                        ),
+                    // ignore: use_build_context_synchronously
+                    DistrictDao district = await ChooseDistrictDialog.show(
+                      context,
+                      listDistrict: list,
+                      colorBackgroundHeader:
+                          const Color.fromARGB(255, 186, 104, 200),
+                      colorLineHeader: const Color.fromARGB(255, 156, 39, 176),
+                      styleTitle: const TextStyle(
+                        fontSize: 18,
                       ),
-                      Icon(
-                        Icons.arrow_drop_down,
-                        color: Colors.grey[600],
-                      )
-                    ],
+                      styleSubTitle:
+                          TextStyle(fontSize: 14, color: Colors.grey[400]),
+                      styleTextNoData: const TextStyle(),
+                      styleTextSearchHint: const TextStyle(),
+                      styleTextSearch: const TextStyle(),
+                      colorBackgroundDialog:
+                          const Color.fromARGB(255, 185, 182, 182),
+                      colorBackgroundSearch:
+                          const Color.fromARGB(255, 185, 182, 182),
+                      colorLine: const Color.fromARGB(255, 185, 182, 182),
+                    );
+
+                    setState(() {
+                      districtSelected = district;
+                    });
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(32),
+                        color: Colors.white,
+                        // ignore: prefer_const_literals_to_create_immutables
+                        boxShadow: [
+                          // ignore: prefer_const_constructors
+                          BoxShadow(
+                              color: const Color.fromARGB(255, 224, 224, 224),
+                              blurRadius: 80,
+                              offset: const Offset(0, 10))
+                        ]),
+                    child: Row(
+                      children: <Widget>[
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                districtSelected == null
+                                    ? "เลือกตำบล"
+                                    : districtSelected!.nameTh,
+                                style: const TextStyle(fontSize: 20),
+                              ),
+                              const SizedBox(
+                                height: 4,
+                              ),
+                              Text(
+                                districtSelected == null
+                                    ? ""
+                                    : districtSelected!.nameEn,
+                                style: const TextStyle(
+                                    fontSize: 14, color: Colors.grey),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Icon(
+                          Icons.arrow_drop_down,
+                          color: Colors.grey[600],
+                        )
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
+                const SizedBox(
+                  height: 15,
+                ),
 
-
-
-
-              // TextButton(
-              //       onPressed: () {
-              //         setState(() {
-              //           address = 'จังหวัด:${provinceSelected!.nameTh},อำเภอ:${amphureSelected!.nameTh},ตำบล:${districtSelected!.nameTh}';
-              //         });
-              //       },
-              //       child: const Text("Print Data")
-              //       ),
-                
-
-
-
-
+                // TextButton(
+                //       onPressed: () {
+                //         setState(() {
+                //           address = 'จังหวัด:${provinceSelected!.nameTh},อำเภอ:${amphureSelected!.nameTh},ตำบล:${districtSelected!.nameTh}';
+                //         });
+                //       },
+                //       child: const Text("Print Data")
+                //       ),
 
                 const SizedBox(
                   height: 20,
@@ -742,10 +746,10 @@ class _FormcluesState extends State<Formclues> {
                     children: [
                       const Text("วัน-เดิอน-ปี เเละ เวลา ที่พบการกระทำผิด"),
                       const Text("*",
-                      style: TextStyle(
-                          color: Colors.red,
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.bold)),
+                          style: TextStyle(
+                              color: Colors.red,
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.bold)),
                     ],
                   ),
                   const SizedBox(height: 8),
@@ -857,13 +861,14 @@ class _FormcluesState extends State<Formclues> {
                     height: 10,
                   ),
                   Row(
+                    // ignore: prefer_const_literals_to_create_immutables
                     children: [
                       const Text("ประเภทของคดี"),
                       const Text("*",
-                      style: TextStyle(
-                          color: Colors.red,
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.bold)),
+                          style: TextStyle(
+                              color: Colors.red,
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.bold)),
                     ],
                   ),
                   const SizedBox(height: 8),
@@ -911,19 +916,19 @@ class _FormcluesState extends State<Formclues> {
                       '',
                       'การกู้ยืมเงินที่เป็นการฉ้อโกงประชาชน',
                       'การควบคุมการแลกเปลี่ยนเงิน',
-                      'ความผิดเกี่ยวกับการเสนอราคาต่อหน่วยงานรัฐ',
-                      'เรื่องการคุ้มครองผู้บริโภค',
-                      'เรื่องเครื่องหมายการค้า',
+                      'การเสนอราคาต่อหน่วยงานรัฐ',
+                      'การคุ้มครองผู้บริโภค',
+                      'เครื่องหมายการค้า',
                       'บริษัทมหาชนจำกัด',
                       'การป้องกันและปราบปรามการฟอกเงิน',
                       'มาตรฐานผลิตภัณฑ์อุตสาหกรรม',
-                      'กฎหมายลิขสิทธิ์',
+                      'ลิขสิทธิ์',
                       'สิทธิบัตร',
                       'หลักทรัพย์และตลาดหลักทรัพย์',
-                      'ประมวลรัษฎากร',
+                      'รัษฎากร',
                       'ศุลกากร',
                       'ภาษีสรรพษามิต',
-                      'การกระทำความผิดเกี่ยวกับคอมพิวเตอร์',
+                      'คอมพิวเตอร์',
                       'การประกอบธุรกิจของคนต่างด้าว',
                       'การป้องกันและปราบปรามการค้ามนุษย์',
                       'แร่',
@@ -933,17 +938,15 @@ class _FormcluesState extends State<Formclues> {
                       'ป่าไม้',
                       'ป่าสงวนแห่งชาติ',
                       'อุทยานแห่งชาติ',
-                      'ประมวลกฎหมายที่ดิน',
-                      'ประมวลกฎหมายยาเสพติด',
-                      'ประมวลกฎหมายอาญาเฉพาะที่เกี่ยวกับสื่อลามกอนาจารเด็ก',
-                      'เครื่องสำอาง'
+                      'ที่ดิน',
+                      'ยาเสพติด',
+                      'สื่อลามกอนาจารเด็ก',
+                      'เครื่องสำอาง',
+                      'อื่นๆ'
                     ].map<DropdownMenuItem<String>>((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
-                        child: Text(
-                          value,
-                          style: const TextStyle(fontSize: 10),
-                        ),
+                        child: Text(value),
                       );
                     }).toList(),
                   ),
@@ -951,13 +954,14 @@ class _FormcluesState extends State<Formclues> {
                     height: 10,
                   ),
                   Row(
+                    // ignore: prefer_const_literals_to_create_immutables
                     children: [
                       const Text("รายละเอียดเบาะแส/การกระทำผิด"),
                       const Text("*",
-                      style: TextStyle(
-                          color: Colors.red,
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.bold)),
+                          style: TextStyle(
+                              color: Colors.red,
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.bold)),
                     ],
                   ),
                   const SizedBox(height: 8),
@@ -1004,23 +1008,24 @@ class _FormcluesState extends State<Formclues> {
                   ),
                   Row(
                     children: [
-                      const Text("จุดประสงค์ที่ต้องการให้ DSI ช่วยเหลือ/ดำเนินคดี"),
-                      const Text("*",
-                      style: TextStyle(
-                          color: Colors.red,
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.bold)),
+                      const Text(
+                          "จุดประสงค์ที่ต้องการให้ DSI ช่วยเหลือ/ดำเนินคดี"),
+                      // const Text("*",
+                      // style: TextStyle(
+                      //     color: Colors.red,
+                      //     fontSize: 15.0,
+                      //     fontWeight: FontWeight.bold)),
                     ],
                   ),
                   const SizedBox(height: 8),
                   TextFormField(
                     controller: pointController,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return "*กรุณากรอกข้อมูลให้ครบ";
-                      }
-                      return null;
-                    },
+                    // validator: (value) {
+                    //   if (value == null || value.isEmpty) {
+                    //     return "*กรุณากรอกข้อมูลให้ครบ";
+                    //   }
+                    //   return null;
+                    // },
                     onSaved: (Point) {
                       cluesdata.Point = Point!;
                     },
@@ -1040,7 +1045,7 @@ class _FormcluesState extends State<Formclues> {
                         borderSide: BorderSide(color: Colors.red, width: 2),
                       ),
                       prefixIcon: Icon(
-                        Icons.location_on_outlined,
+                        Icons.power_input_outlined,
                         color: Colors.grey,
                       ),
                       label: Text(
@@ -1052,95 +1057,134 @@ class _FormcluesState extends State<Formclues> {
                     minLines: 1,
                   ),
                   const SizedBox(
+                    height: 30,
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(20),
+                    alignment: Alignment.center,
+                    // margin: EdgeInsets.all(20),
+                    height: 260,
+
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius:
+                          BorderRadius.circular(32), //border corner radius
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color.fromARGB(255, 227, 227, 227)
+                              .withOpacity(0.5), //color of shadow
+                          spreadRadius: 5, //spread radius
+                          blurRadius: 7, // blur radius
+                          offset: Offset(0, 2), // changes position of shadow
+                          //first paramerter of offset is left-right
+                          //second parameter is top to down
+                        ),
+                        //you can set more BoxShadow() here
+                      ],
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          // ignore: prefer_const_literals_to_create_immutables
+                          children: [
+                            const Text("ประสงค์เเสดงตัวตน",
+                                style: TextStyle(
+                                    color: Color.fromARGB(255, 23, 21, 75),
+                                    fontSize: 22.0,
+                                    fontWeight: FontWeight.bold)),
+                            const Text(
+                              "(ไม่บังคับ)",
+                              style: TextStyle(color: Colors.red),
+                            ),
+                          ],
+                        ),
+                        const Text(
+                            "เพื่อเป็นช่องทางในการติดต่อขอข้อมูลเพิ่มเติม"),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Column(
+                          children: [
+                            TextFormField(
+                              controller: nameController,
+                              onSaved: (Name) {
+                                cluesdata.Name = Name!;
+                              },
+                              decoration: const InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(32)),
+                                  borderSide: BorderSide(
+                                      color: Color(0xFF244684), width: 2),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(32)),
+                                  borderSide: BorderSide(
+                                      color: Color(0xFF244684), width: 2),
+                                ),
+                                prefixIcon: Icon(
+                                  Icons.people_outline_rounded,
+                                  color: Colors.grey,
+                                ),
+                                label: Text(
+                                  'ชื่อ - สกุล',
+                                  style: TextStyle(color: Colors.grey),
+                                ),
+                              ),
+                              maxLines: 5,
+                              minLines: 1,
+                            ),
+                            const SizedBox(
+                              height: 8,
+                            ),
+                            TextFormField(
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(10),
+                              ],
+                              controller: phoneController,
+                              onSaved: (Phone) {
+                                cluesdata.Phone = Phone!;
+                              },
+                              keyboardType: TextInputType.number,
+                              decoration: const InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(32)),
+                                  borderSide: BorderSide(
+                                      color: Color(0xFF244684), width: 2),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(32)),
+                                  borderSide: BorderSide(
+                                      color: Color(0xFF244684), width: 2),
+                                ),
+                                prefixIcon: Icon(
+                                  Icons.phone_android_rounded,
+                                  color: Colors.grey,
+                                ),
+                                label: Text(
+                                  'กรอกเบอร์โทรศัพท์ 10 หลัก',
+                                  style: TextStyle(color: Colors.grey),
+                                ),
+                              ),
+                              maxLines: 5,
+                              minLines: 1,
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
                     height: 20,
-                  ),
-                  const Text("ประสงค์เเสดงตัวตน",
-                      style: TextStyle(
-                          color: Color.fromARGB(255, 23, 21, 75),
-                          fontSize: 30.0,
-                          fontWeight: FontWeight.bold)),
-                  // const Text("*ไม่บังคับ*",
-                  //     style: TextStyle(
-                  //         color: Colors.red,
-                  //         fontSize: 15.0,
-                  //         fontWeight: FontWeight.bold)),
-                  const Divider(
-                    height: 10,
-                    color: Colors.indigo,
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Column(
-                    children: [
-                      TextFormField(
-                        controller: nameController,
-                        onSaved: (Name) {
-                          cluesdata.Name = Name!;
-                        },
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(32)),
-                            borderSide:
-                                BorderSide(color: Color(0xFF244684), width: 2),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(32)),
-                            borderSide:
-                                BorderSide(color: Color(0xFF244684), width: 2),
-                          ),
-                          prefixIcon: Icon(
-                            Icons.people_outline_rounded,
-                            color: Colors.grey,
-                          ),
-                          label: Text(
-                            'ชื่อ - สกุล',
-                            style: TextStyle(color: Colors.grey),
-                          ),
-                        ),
-                        maxLines: 5,
-                        minLines: 1,
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      TextFormField(
-                        inputFormatters: [
-                          LengthLimitingTextInputFormatter(10),
-                        ],
-                        controller: phoneController,
-                        onSaved: (Phone) {
-                          cluesdata.Phone = Phone!;
-                        },
-                        keyboardType: TextInputType.number,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(32)),
-                            borderSide:
-                                BorderSide(color: Color(0xFF244684), width: 2),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(32)),
-                            borderSide:
-                                BorderSide(color: Color(0xFF244684), width: 2),
-                          ),
-                          prefixIcon: Icon(
-                            Icons.phone_android_rounded,
-                            color: Colors.grey,
-                          ),
-                          label: Text(
-                            'กรอกเบอร์โทรศัพท์ 10 หลัก',
-                            style: TextStyle(color: Colors.grey),
-                          ),
-                        ),
-                        maxLines: 5,
-                        minLines: 1,
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                    ],
-                  ),
+                  )
                 ],
               ),
             )),
@@ -1210,7 +1254,8 @@ class _FormcluesState extends State<Formclues> {
                         SizedBox(
                             width: MediaQuery.of(context).size.width * 0.6,
                             child: Text(
-                                ': ${addressController.text} $addresspmd  \n: ละติจูดที่ $_lat\n: ลองติจูดที่ $_long: ', )),
+                              ': ${addressController.text + addresspmd} $addresspmd  \n: ละติจูดที่ $_lat\n: ลองติจูดที่ $_long: ',
+                            )),
                       ],
                     ),
                   ],
@@ -1275,7 +1320,7 @@ class _FormcluesState extends State<Formclues> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        const Text('ประเภทของเบาะเเส'),
+                        const Text('ประเภทของคดี'),
                         SizedBox(
                           width: MediaQuery.of(context).size.width * 0.7,
                           child: Text(': ${dropdownValue}'),
@@ -1315,7 +1360,7 @@ class _FormcluesState extends State<Formclues> {
                 Row(
                   children: [
                     const Icon(
-                      Icons.api_outlined,
+                      Icons.power_input_outlined,
                       size: 35,
                     ),
                     const SizedBox(
@@ -1414,7 +1459,7 @@ class _FormcluesState extends State<Formclues> {
                 btnOkOnPress: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => HomeBar()),
+                    MaterialPageRoute(builder: (context) => const HomeBar()),
                   );
                 }).show();
           },

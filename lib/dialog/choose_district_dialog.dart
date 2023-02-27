@@ -161,11 +161,11 @@ class _ChooseDistrictDialogState extends State<ChooseDistrictDialog> {
                   const SizedBox(
                     height: 4,
                   ),
-                  Text(
-                    district.nameEn,
-                    style: 
-                        const TextStyle(fontSize: 14, color: Colors.grey),
-                  ),
+                  // Text(
+                  //   district.nameEn,
+                  //   style: 
+                  //       const TextStyle(fontSize: 14, color: Colors.grey),
+                  // ),
                 ],
               ),
             ),

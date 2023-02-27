@@ -10,7 +10,7 @@ import 'package:main_cluesnew/screen/Welclues.dart';
 import 'package:main_cluesnew/screen/contact.dart';
 
 class HomeBar extends StatefulWidget {
-  HomeBar({
+  const HomeBar({
     Key? key,
     this.title,
   }) : super(key: key);
@@ -38,18 +38,18 @@ class _HomeBarState extends State<HomeBar> {
 
   List<TabItem> tabItems = List.of([
     TabItem(
-      Icons.home,
-      "",
+      Icons.library_books_outlined,
+      "เพิ่มเติม",
       MyColors.nBlue,
     ),
     TabItem(
-      Icons.search,
-      "",
-      MyColors.nBlue,
+      Icons.location_on_outlined,
+      "เเจ้งเบาะเเส",
+      MyColors.nOrange,
     ),
     TabItem(
-      Icons.notifications,
-      "",
+      Icons.contacts_outlined,
+      "ติดต่อ",
       MyColors.nBlue,
     ),
   ]);

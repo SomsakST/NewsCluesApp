@@ -7,7 +7,6 @@ import 'package:main_cluesnew/common/my_font_size.dart';
 import 'package:main_cluesnew/insert.dart/FormclursStepper.dart';
 import 'package:main_cluesnew/screen/onboarding1.dart';
 import 'package:main_cluesnew/screen/onboarding2.dart';
-import 'package:main_cluesnew/ui/widgets/custom_card.dart';
 
 class Welclues extends StatefulWidget {
   const Welclues({super.key});
