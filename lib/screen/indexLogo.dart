@@ -21,7 +21,7 @@ class _indexLogoState extends State<indexLogo> {
     Timer(
         const Duration(seconds: 5),
         () => Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (BuildContext context) => HomeBar())));
+            MaterialPageRoute(builder: (BuildContext context) => const HomeBar())));
 // OnboardingScreen()
     return Scaffold(
       backgroundColor: MyColors.nBlue,
@@ -37,7 +37,7 @@ class _indexLogoState extends State<indexLogo> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset('images/Newclues.5.1.png', scale:8),
+                Image.asset('images/Newclues.5.1.png', scale:3),
               ],
             ),
           ),

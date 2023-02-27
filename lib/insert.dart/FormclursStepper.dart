@@ -158,11 +158,11 @@ class _FormcluesState extends State<Formclues> {
         )),
         child: SafeArea(
           child: Container(
-            decoration: const BoxDecoration(
-                image: DecorationImage(
-              image: AssetImage('images/Newclues.7.png'),
-              fit: BoxFit.cover,
-            )),
+            // decoration: const BoxDecoration(
+            //     image: DecorationImage(
+            //   image: AssetImage('images/Newclues.7.png'),
+            //   fit: BoxFit.cover,
+            // )),
             child: Stepper(
               steps: getSteps(),
               type: StepperType.horizontal,
@@ -308,7 +308,7 @@ class _FormcluesState extends State<Formclues> {
                         color: Color.fromARGB(255, 23, 21, 75),
                         fontSize: 30.0,
                         fontWeight: FontWeight.bold)),
-                const Text("*ค้นหาสถานที่ก่อนกดถัดไป",
+                const Text("บันทึกสถานที่ก่อนกดถัดไป*",
                     style: TextStyle(
                         color: Color.fromARGB(255, 238, 13, 54),
                         fontSize: 15.0,
@@ -355,7 +355,7 @@ class _FormcluesState extends State<Formclues> {
                   minLines: 1,
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 8,
                 ),
                 //ฐานข้อมูลจังหวัด
                 GestureDetector(
@@ -411,18 +411,18 @@ class _FormcluesState extends State<Formclues> {
                                 provinceSelected == null
                                     ? "เลือกจังหวัด"
                                     : provinceSelected!.nameTh,
-                                style: const TextStyle(fontSize: 20),
+                                style: const TextStyle(fontSize: 16),
                               ),
                               const SizedBox(
                                 height: 4,
                               ),
-                              Text(
-                                provinceSelected == null
-                                    ? ""
-                                    : provinceSelected!.nameEn,
-                                style: const TextStyle(
-                                    fontSize: 14, color: Colors.grey),
-                              ),
+                              // Text(
+                              //   provinceSelected == null
+                              //       ? ""
+                              //       : provinceSelected!.nameEn,
+                              //   style: const TextStyle(
+                              //       fontSize: 14, color: Colors.grey),
+                              // ),
                             ],
                           ),
                         ),
@@ -446,22 +446,22 @@ class _FormcluesState extends State<Formclues> {
                     AmphureDao amphure = await ChooseAmphureDialog.show(
                       context,
                       listAmphure: list,
-                      colorBackgroundHeader:
-                          const Color.fromARGB(255, 186, 104, 200),
-                      colorLineHeader: const Color.fromARGB(255, 156, 39, 176),
+                      colorBackgroundHeader: MyColors.nBlue,
+                      colorLineHeader: MyColors.nOrange,
                       styleTitle: const TextStyle(
                         fontSize: 18,
                       ),
-                      styleSubTitle:
-                          TextStyle(fontSize: 14, color: Colors.grey[400]),
+                      styleSubTitle: const TextStyle(
+                          fontSize: 14,
+                          color: Color.fromARGB(255, 255, 255, 255)),
                       styleTextNoData: const TextStyle(),
                       styleTextSearchHint: const TextStyle(),
                       styleTextSearch: const TextStyle(),
                       colorBackgroundDialog:
-                          const Color.fromARGB(255, 185, 182, 182),
+                          const Color.fromARGB(255, 255, 255, 255),
                       colorBackgroundSearch:
-                          const Color.fromARGB(255, 185, 182, 182),
-                      colorLine: const Color.fromARGB(255, 185, 182, 182),
+                          const Color.fromARGB(255, 255, 255, 255),
+                      colorLine: const Color.fromARGB(255, 255, 255, 255),
                     );
 
                     setState(() {
@@ -491,18 +491,18 @@ class _FormcluesState extends State<Formclues> {
                                 amphureSelected == null
                                     ? "เลือกอำเภอ"
                                     : amphureSelected!.nameTh,
-                                style: const TextStyle(fontSize: 20),
+                                style: const TextStyle(fontSize: 16),
                               ),
                               const SizedBox(
                                 height: 4,
                               ),
-                              Text(
-                                amphureSelected == null
-                                    ? ""
-                                    : amphureSelected!.nameEn,
-                                style: const TextStyle(
-                                    fontSize: 14, color: Colors.grey),
-                              ),
+                              // Text(
+                              //   amphureSelected == null
+                              //       ? ""
+                              //       : amphureSelected!.nameEn,
+                              //   style: const TextStyle(
+                              //       fontSize: 14, color: Colors.grey),
+                              // ),
                             ],
                           ),
                         ),
@@ -526,22 +526,22 @@ class _FormcluesState extends State<Formclues> {
                     DistrictDao district = await ChooseDistrictDialog.show(
                       context,
                       listDistrict: list,
-                      colorBackgroundHeader:
-                          const Color.fromARGB(255, 186, 104, 200),
-                      colorLineHeader: const Color.fromARGB(255, 156, 39, 176),
+                     colorBackgroundHeader: MyColors.nBlue,
+                      colorLineHeader: MyColors.nOrange,
                       styleTitle: const TextStyle(
                         fontSize: 18,
                       ),
-                      styleSubTitle:
-                          TextStyle(fontSize: 14, color: Colors.grey[400]),
+                      styleSubTitle: const TextStyle(
+                          fontSize: 14,
+                          color: Color.fromARGB(255, 255, 255, 255)),
                       styleTextNoData: const TextStyle(),
                       styleTextSearchHint: const TextStyle(),
                       styleTextSearch: const TextStyle(),
                       colorBackgroundDialog:
-                          const Color.fromARGB(255, 185, 182, 182),
+                          const Color.fromARGB(255, 255, 255, 255),
                       colorBackgroundSearch:
-                          const Color.fromARGB(255, 185, 182, 182),
-                      colorLine: const Color.fromARGB(255, 185, 182, 182),
+                          const Color.fromARGB(255, 255, 255, 255),
+                      colorLine: const Color.fromARGB(255, 255, 255, 255),
                     );
 
                     setState(() {
@@ -571,18 +571,18 @@ class _FormcluesState extends State<Formclues> {
                                 districtSelected == null
                                     ? "เลือกตำบล"
                                     : districtSelected!.nameTh,
-                                style: const TextStyle(fontSize: 20),
+                                style: const TextStyle(fontSize: 16),
                               ),
                               const SizedBox(
                                 height: 4,
                               ),
-                              Text(
-                                districtSelected == null
-                                    ? ""
-                                    : districtSelected!.nameEn,
-                                style: const TextStyle(
-                                    fontSize: 14, color: Colors.grey),
-                              ),
+                              // Text(
+                              //   districtSelected == null
+                              //       ? ""
+                              //       : districtSelected!.nameEn,
+                              //   style: const TextStyle(
+                              //       fontSize: 14, color: Colors.grey),
+                              // ),
                             ],
                           ),
                         ),
@@ -608,7 +608,7 @@ class _FormcluesState extends State<Formclues> {
                 //       ),
 
                 const SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 const Text("ปักหมุดสถานที่พบ"),
                 const SizedBox(height: 8),

@@ -68,6 +68,7 @@ class _WelcluesState extends State<Welclues> {
                           ),
                           Expanded(
                               child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
                                 "เเอปพลิเคชันรับเเจ้งเบาะเเสทางการข่าว",
@@ -75,32 +76,18 @@ class _WelcluesState extends State<Welclues> {
                                     color: MyColors.blackText,
                                     fontSize: MyFontSize.small2),
                               ),
-                              // const SizedBox(height: 3),
+                              
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  // Icon(
-                                  //   Icons.circle_outlined,
-                                  //   size: 10,
-                                  //   color: MyColors.blackText,
-                                  // ),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
+                                  
                                   Text(
-                                    "Bohsea Khaw Application",
+                                    "News clues Application | NCA",
                                     style: TextStyle(
                                         color: MyColors.blackText,
                                         fontSize: MyFontSize.medium1),
                                   ),
-                                  const SizedBox(
-                                    width: 5,
-                                  ),
-                                  // Icon(
-                                  //   Icons.circle_outlined,
-                                  //   size: 10,
-                                  //   color: MyColors.blackText,
-                                  // ),
+                                  
                                 ],
                               ),
                             ],

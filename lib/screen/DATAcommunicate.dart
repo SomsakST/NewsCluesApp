@@ -55,7 +55,7 @@ class _DATAcommunicateState extends State<DATAcommunicate> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: MyColors.nBlue,
-                      fontSize: 40,
+                      fontSize: 35,
                       fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(
@@ -114,28 +114,30 @@ class _DATAcommunicateState extends State<DATAcommunicate> {
                       const SizedBox(
                         width: 15,
                       ),
-                      Text(
-                        "กรมสอบสวนคดีพิเศษ",
-                        style: TextStyle(
-                          
-                            color: MyColors.blackText,
-                            fontSize: MyFontSize.large1,
-                            fontWeight: FontWeight.bold),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "กรมสอบสวนคดีพิเศษ",
+                            style: TextStyle(
+                              
+                                color: MyColors.blackText,
+                                fontSize: MyFontSize.large1,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            "Department of Special Investigation | DSI",
+                            style: TextStyle(
+                              color: MyColors.blackText.withOpacity(.8),
+                              fontSize: MyFontSize.small3,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Center(
-                    child: Text(
-                      "Department of Special Investigation | DSI",
-                      style: TextStyle(
-                        color: MyColors.blackText.withOpacity(.8),
-                        fontSize: MyFontSize.small3,
-                      ),
-                    ),
-                  ),
+                  
+                  
                 ],
               ),
             ),
@@ -170,16 +172,26 @@ class _DATAcommunicateState extends State<DATAcommunicate> {
                   const SizedBox(
                     width: 15,
                   ),
-                  Text(
-                    "เตือนภัย",
-                    style: TextStyle(
-                        color: MyColors.blackText,
-                        fontSize: MyFontSize.large1,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  // const SizedBox(
-                  //   height: 10,
-                  // ),
+                   Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "เตือนภัย",
+                            style: TextStyle(
+                              
+                                color: MyColors.blackText,
+                                fontSize: MyFontSize.large1,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            "ข้อมูลเตือนภัยในรูปแบบกราฟิก",
+                            style: TextStyle(
+                              color: MyColors.blackText.withOpacity(.8),
+                              fontSize: MyFontSize.small3,
+                            ),
+                          ),
+                        ],
+                      ),
                 ],
               ),
             ),

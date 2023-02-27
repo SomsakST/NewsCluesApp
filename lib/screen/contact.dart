@@ -57,13 +57,13 @@ class _ContactDsiState extends State<ContactDsi> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                         const SizedBox(
-                          height: 15,
-                        ),
+                        //  const SizedBox(
+                        //   height: 5,
+                        // ),
                         Center(
                           child: Image.asset(
                             "images/Newclues.5.1.png",
-                            scale: 10,
+                            scale: 4.5,
                           ),
                         ),
                         const SizedBox(
