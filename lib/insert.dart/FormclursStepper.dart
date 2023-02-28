@@ -1201,7 +1201,7 @@ class _FormcluesState extends State<Formclues> {
                         color: Color.fromARGB(255, 23, 21, 75),
                         fontSize: 30.0,
                         fontWeight: FontWeight.bold)),
-                const Text("ตรวจสอบรายละเอียดก่อนทำการยืนยัน",
+                const Text("ตรวจสอบรายละเอียดก่อนทำการบันทึก",
                     style: TextStyle(
                         color: Color.fromARGB(255, 23, 21, 75),
                         fontSize: 15.0,
@@ -1211,36 +1211,13 @@ class _FormcluesState extends State<Formclues> {
                   color: Colors.indigo,
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
-                // Row(
-                //   children: [
-                //     const Icon(
-                //       Icons.location_searching_outlined,
-                //       size: 35,
-                //     ),
-                //     const SizedBox(
-                //       width: 10,
-                //     ),
-                //     Column(
-                //       crossAxisAlignment: CrossAxisAlignment.start,
-                //       mainAxisAlignment: MainAxisAlignment.start,
-                //       children: [
-                //         const Text('ที่อยู่'),
-                //         SizedBox(
-                //             width: MediaQuery.of(context).size.width * 0.6,
-                //             child: Text(': ${addressController.text}')),
-                //       ],
-                //     ),
-                //   ],
-                // ),
-                // const SizedBox(
-                //   height: 20,
-                // ),
                 Row(
                   children: [
                     const Icon(
                       Icons.location_on_outlined,
+                      color: Colors.grey,
                       size: 35,
                     ),
                     const SizedBox(
@@ -1269,6 +1246,7 @@ class _FormcluesState extends State<Formclues> {
                       children: [
                         const Icon(
                           Icons.date_range_rounded,
+                          color: Colors.grey,
                           size: 35,
                         ),
                         const SizedBox(
@@ -1287,6 +1265,7 @@ class _FormcluesState extends State<Formclues> {
                         ),
                         const Icon(
                           Icons.timelapse_rounded,
+                          color: Colors.grey,
                           size: 35,
                         ),
                         const SizedBox(
@@ -1311,6 +1290,7 @@ class _FormcluesState extends State<Formclues> {
                   children: [
                     const Icon(
                       Icons.view_comfy_alt_outlined,
+                      color: Colors.grey,
                       size: 35,
                     ),
                     const SizedBox(
@@ -1336,6 +1316,7 @@ class _FormcluesState extends State<Formclues> {
                   children: [
                     const Icon(
                       Icons.description_outlined,
+                      color: Colors.grey,
                       size: 35,
                     ),
                     const SizedBox(
@@ -1361,6 +1342,7 @@ class _FormcluesState extends State<Formclues> {
                   children: [
                     const Icon(
                       Icons.power_input_outlined,
+                      color: Colors.grey,
                       size: 35,
                     ),
                     const SizedBox(
@@ -1387,6 +1369,7 @@ class _FormcluesState extends State<Formclues> {
                   children: [
                     const Icon(
                       Icons.person_pin_outlined,
+                      color: Colors.grey,
                       size: 35,
                     ),
                     const SizedBox(

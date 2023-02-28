@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:main_cluesnew/common/my_colors.dart';
 import 'package:main_cluesnew/dao/province_dao.dart';
 import 'package:main_cluesnew/dialog/choose_amphure_dialog.dart';
 
@@ -99,7 +100,7 @@ class _ChooseProvinceDialogState extends State<ChooseProvinceDialog> {
                 children: <Widget>[
                   buildSearchContainer(),
                   Container(
-                    color: const Color.fromARGB(255, 30, 136, 229),
+                    color: MyColors.nGrey,
                     height: 4,
                   ),
                   Expanded(
@@ -183,7 +184,7 @@ class _ChooseProvinceDialogState extends State<ChooseProvinceDialog> {
     return Container(
       padding: const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 8),
       decoration: BoxDecoration(
-          color: Colors.blue,
+          color: MyColors.nBlue,
           borderRadius:
               BorderRadius.vertical(top: Radius.circular(widget.borderRadius))),
       child: Column(
@@ -191,7 +192,7 @@ class _ChooseProvinceDialogState extends State<ChooseProvinceDialog> {
           Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.7),
+                  color: Color.fromARGB(255, 255, 255, 255).withOpacity(0.9),
                   borderRadius: BorderRadius.circular(8)),
               child: TextField(
                 controller: _searchProvinceController,
