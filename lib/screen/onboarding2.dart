@@ -30,11 +30,6 @@ class _OnboardingScreen2State extends State<OnboardingScreen2> {
             controller: _pageController,
             children: [
               createPage(
-                image: 'images/d.6.png',
-                title: Constants.titleOne,
-                description: Constants.descriptionOne,
-              ),
-              createPage(
                 image: 'images/d.5.png',
                 title: Constants.titleOne,
                 description: Constants.descriptionTwo,
@@ -86,9 +81,9 @@ class _OnboardingScreen2State extends State<OnboardingScreen2> {
               child: IconButton(
                   onPressed: () {
                     setState(() {
-                      if (currentIndex < 8) {
+                      if (currentIndex < 7) {
                         currentIndex++;
-                        if (currentIndex < 8) {
+                        if (currentIndex < 7) {
                           _pageController.nextPage(
                               duration: const Duration(milliseconds: 300),
                               curve: Curves.easeIn);
@@ -114,7 +109,7 @@ class _OnboardingScreen2State extends State<OnboardingScreen2> {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
       height: 10.0,
-      width: isActive ? 20 : 8,
+      width: isActive ? 20 : 7,
       margin: const EdgeInsets.only(right: 5.0),
       decoration: BoxDecoration(
         color: const Color(0xFF244684),
@@ -127,7 +122,7 @@ class _OnboardingScreen2State extends State<OnboardingScreen2> {
   List<Widget> _buildIndicator() {
     List<Widget> indicators = [];
 
-    for (int i = 0; i < 8; i++) {
+    for (int i = 0; i < 7; i++) {
       if (currentIndex == i) {
         indicators.add(_indicator(true));
       } else {

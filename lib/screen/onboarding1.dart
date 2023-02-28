@@ -49,6 +49,11 @@ class _OnboardingScreen1State extends State<OnboardingScreen1> {
                 title: Constants.descriptionOne,
                 description: Constants.descriptionThree,
               ),
+              createPage(
+                image: 'images/d.6.png',
+                title: Constants.descriptionOne,
+                description: Constants.descriptionThree,
+              ),
             ],
           ),
           Positioned(
@@ -107,7 +112,7 @@ class _OnboardingScreen1State extends State<OnboardingScreen1> {
   List<Widget> _buildIndicator() {
     List<Widget> indicators = [];
 
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 5; i++) {
       if (currentIndex == i) {
         indicators.add(_indicator(true));
       } else {
