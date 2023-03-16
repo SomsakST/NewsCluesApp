@@ -21,29 +21,31 @@ class _indexLogoState extends State<indexLogo> {
     Timer(
         const Duration(seconds: 5),
         () => Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (BuildContext context) => const HomeBar())));
+            MaterialPageRoute(builder: (BuildContext context) => HomeBar())));
 // OnboardingScreen()
-    return Scaffold(
-      backgroundColor: MyColors.nBlue,
-        body: SafeArea(
-      child: Center(
-        child: Container(
-          // decoration: const BoxDecoration(
-          //     image: DecorationImage(
-          //   image: AssetImage('images/Newclues.6.png'),
-          //   fit: BoxFit.cover,
-          // )),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset('images/Newclues.5.1.png', scale:3),
-              ],
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: MyColors.nBlue,
+          body: SafeArea(
+        child: Center(
+          child: Container(
+            // decoration: const BoxDecoration(
+            //     image: DecorationImage(
+            //   image: AssetImage('images/Newclues.6.png'),
+            //   fit: BoxFit.cover,
+            // )),
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset('images/Newclues.5.1.png', scale:3),
+                ],
+              ),
             ),
           ),
         ),
-      ),
-    ));
+      )),
+    );
 
    
   }

@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'package:main_cluesnew/screen/indexLogo.dart';
 import 'package:main_cluesnew/flutter_thailand_provinces.dart';
 
@@ -26,8 +27,8 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.promptTextTheme(),
         // primarySwatch: Colors.white,
       ),
-      // home: const indexLogo(),
       home: const indexLogo(),
+   
     );
   }
 }

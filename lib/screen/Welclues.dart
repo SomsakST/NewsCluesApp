@@ -1,3 +1,5 @@
+// ignore_for_file: sort_child_properties_last
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -5,8 +7,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:main_cluesnew/common/my_colors.dart';
 import 'package:main_cluesnew/common/my_font_size.dart';
 import 'package:main_cluesnew/insert.dart/FormclursStepper.dart';
-import 'package:main_cluesnew/screen/onboarding1.dart';
-import 'package:main_cluesnew/screen/onboarding2.dart';
+
 
 class Welclues extends StatefulWidget {
   const Welclues({super.key});
@@ -110,11 +111,11 @@ class _WelcluesState extends State<Welclues> {
                         height:10,
                       ),
                       const Text(
-                        "เบาะเเสทางการข่าว",
+                        "เเจ้งเบาะเเสทางการข่าว",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: MyColors.nBlue,
-                            fontSize: 35,
+                            fontSize: 34,
                             fontWeight: FontWeight.bold),
                       ),
                       Text(
@@ -144,7 +145,7 @@ class _WelcluesState extends State<Welclues> {
       height: 50,
       child: ElevatedButton(
         child: const Text(
-          "กดเเจ้งเบาะเเสที่นี้",
+          "กดเเจ้งเบาะเเสที่นี่",
           style: TextStyle(
               fontSize: 20.0,
               color: MyColors.nWhite,

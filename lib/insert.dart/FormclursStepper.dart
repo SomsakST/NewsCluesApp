@@ -79,7 +79,7 @@ class _FormcluesState extends State<Formclues> {
   signOut() async {
     await auth.signOut();
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => const HomeBar()));
+        context, MaterialPageRoute(builder: (context) =>  const HomeBar()));
   }
 
 // กำหนดการตั้งค่า Firebase.......................................................................
@@ -308,10 +308,10 @@ class _FormcluesState extends State<Formclues> {
                         color: Color.fromARGB(255, 23, 21, 75),
                         fontSize: 30.0,
                         fontWeight: FontWeight.bold)),
-                const Text("บันทึกสถานที่ก่อนกดถัดไป*",
+                const Text("ปักหมุดสถานที่ ณ ที่พบเบาะเเส หรือ กรอกข้อมูลสถานที่ด้วยตัวเอง",
                     style: TextStyle(
-                        color: Color.fromARGB(255, 238, 13, 54),
-                        fontSize: 15.0,
+                        color: MyColors.nOrange,
+                        fontSize: 13.0,
                         fontWeight: FontWeight.bold)),
                 const Divider(
                   height: 15,
@@ -320,301 +320,48 @@ class _FormcluesState extends State<Formclues> {
                 const SizedBox(
                   height: 10,
                 ),
-                // const Text("กรอกข้อมูล ( หมู่บ้าน,ซอย,ตำบล,อำเภอ,จังหวัด ) "),
-                const SizedBox(height: 8),
-                TextFormField(
-                  controller: addressController,
-                  onSaved: (Address) {
-                    cluesdata.Address = Address!;
-                  },
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(32)),
-                      borderSide:
-                          BorderSide(color: Color(0xFF244684), width: 2),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(32)),
-                      borderSide:
-                          BorderSide(color: Color(0xFF244684), width: 2),
-                    ),
-                    errorBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(32)),
-                      borderSide: BorderSide(color: Colors.red, width: 2),
-                    ),
-                    prefixIcon: Icon(
-                      Icons.location_on_outlined,
-                      color: Colors.grey,
-                    ),
-                    label: Text(
-                      'กรอกข้อมูล (บ้านเลขที่, หมู่บ้าน, ซอย)',
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                  ),
-                  maxLines: 5,
-                  minLines: 1,
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                //ฐานข้อมูลจังหวัด
-                GestureDetector(
-                  onTap: () async {
-                    var list = await ProvinceProvider.all();
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  alignment: Alignment.center,
+                  // margin: EdgeInsets.all(20),
+                  height: 465,
 
-                    // ignore: use_build_context_synchronously
-                    ProvinceDao province = await ChooseProvinceDialog.show(
-                      context,
-                      listProvinces: list,
-                      colorBackgroundHeader: MyColors.nBlue,
-                      colorLineHeader: MyColors.nOrange,
-                      styleTitle: const TextStyle(
-                        fontSize: 18,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius:
+                        BorderRadius.circular(32), //border corner radius
+                    boxShadow: [
+                      BoxShadow(
+                        color: const Color.fromARGB(255, 227, 227, 227)
+                            .withOpacity(0.5), //color of shadow
+                        spreadRadius: 5, //spread radius
+                        blurRadius: 7, // blur radius
+                        offset: const Offset(0, 2), // changes position of shadow
+                        //first paramerter of offset is left-right
+                        //second parameter is top to down
                       ),
-                      styleSubTitle: const TextStyle(
-                          fontSize: 14,
-                          color: Color.fromARGB(255, 255, 255, 255)),
-                      styleTextNoData: const TextStyle(),
-                      styleTextSearchHint: const TextStyle(),
-                      styleTextSearch: const TextStyle(),
-                      colorBackgroundDialog:
-                          const Color.fromARGB(255, 255, 255, 255),
-                      colorBackgroundSearch:
-                          const Color.fromARGB(255, 255, 255, 255),
-                      colorLine: const Color.fromARGB(255, 255, 255, 255),
-                    );
-
-                    setState(() {
-                      provinceSelected = province;
-                    });
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(32),
-                        color: Colors.white,
-                        // ignore: prefer_const_literals_to_create_immutables
-                        boxShadow: [
-                          // ignore: prefer_const_constructors
-                          BoxShadow(
-                              color: const Color.fromARGB(255, 224, 224, 224),
-                              blurRadius: 80,
-                              offset: const Offset(0, 10))
-                        ]),
-                    child: Row(
-                      children: <Widget>[
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text(
-                                provinceSelected == null
-                                    ? "เลือกจังหวัด"
-                                    : provinceSelected!.nameTh,
-                                style: const TextStyle(fontSize: 16),
-                              ),
-                              const SizedBox(
-                                height: 4,
-                              ),
-                              // Text(
-                              //   provinceSelected == null
-                              //       ? ""
-                              //       : provinceSelected!.nameEn,
-                              //   style: const TextStyle(
-                              //       fontSize: 14, color: Colors.grey),
-                              // ),
-                            ],
-                          ),
-                        ),
-                        Icon(
-                          Icons.arrow_drop_down,
-                          color: Colors.grey[600],
-                        )
-                      ],
-                    ),
+                      //you can set more BoxShadow() here
+                    ],
                   ),
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                //ฐานข้อมูลอำเภอ
-                GestureDetector(
-                  onTap: () async {
-                    var list = await AmphureProvider.all();
-
-                    // ignore: use_build_context_synchronously
-                    AmphureDao amphure = await ChooseAmphureDialog.show(
-                      context,
-                      listAmphure: list,
-                      colorBackgroundHeader: MyColors.nBlue,
-                      colorLineHeader: MyColors.nOrange,
-                      styleTitle: const TextStyle(
-                        fontSize: 18,
-                      ),
-                      styleSubTitle: const TextStyle(
-                          fontSize: 14,
-                          color: Color.fromARGB(255, 255, 255, 255)),
-                      styleTextNoData: const TextStyle(),
-                      styleTextSearchHint: const TextStyle(),
-                      styleTextSearch: const TextStyle(),
-                      colorBackgroundDialog:
-                          const Color.fromARGB(255, 255, 255, 255),
-                      colorBackgroundSearch:
-                          const Color.fromARGB(255, 255, 255, 255),
-                      colorLine: const Color.fromARGB(255, 255, 255, 255),
-                    );
-
-                    setState(() {
-                      amphureSelected = amphure;
-                    });
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(32),
-                        color: Colors.white,
-                        // ignore: prefer_const_literals_to_create_immutables
-                        boxShadow: [
-                          // ignore: prefer_const_constructors
-                          BoxShadow(
-                              color: const Color.fromARGB(255, 224, 224, 224),
-                              blurRadius: 80,
-                              offset: const Offset(0, 10))
-                        ]),
-                    child: Row(
-                      children: <Widget>[
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text(
-                                amphureSelected == null
-                                    ? "เลือกอำเภอ"
-                                    : amphureSelected!.nameTh,
-                                style: const TextStyle(fontSize: 16),
-                              ),
-                              const SizedBox(
-                                height: 4,
-                              ),
-                              // Text(
-                              //   amphureSelected == null
-                              //       ? ""
-                              //       : amphureSelected!.nameEn,
-                              //   style: const TextStyle(
-                              //       fontSize: 14, color: Colors.grey),
-                              // ),
-                            ],
-                          ),
-                        ),
-                        Icon(
-                          Icons.arrow_drop_down,
-                          color: Colors.grey[600],
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                //ฐานข้อมูลตำบล
-                GestureDetector(
-                  onTap: () async {
-                    var list = await DistrictProvider.all();
-
-                    // ignore: use_build_context_synchronously
-                    DistrictDao district = await ChooseDistrictDialog.show(
-                      context,
-                      listDistrict: list,
-                     colorBackgroundHeader: MyColors.nBlue,
-                      colorLineHeader: MyColors.nOrange,
-                      styleTitle: const TextStyle(
-                        fontSize: 18,
-                      ),
-                      styleSubTitle: const TextStyle(
-                          fontSize: 14,
-                          color: Color.fromARGB(255, 255, 255, 255)),
-                      styleTextNoData: const TextStyle(),
-                      styleTextSearchHint: const TextStyle(),
-                      styleTextSearch: const TextStyle(),
-                      colorBackgroundDialog:
-                          const Color.fromARGB(255, 255, 255, 255),
-                      colorBackgroundSearch:
-                          const Color.fromARGB(255, 255, 255, 255),
-                      colorLine: const Color.fromARGB(255, 255, 255, 255),
-                    );
-
-                    setState(() {
-                      districtSelected = district;
-                    });
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(32),
-                        color: Colors.white,
-                        // ignore: prefer_const_literals_to_create_immutables
-                        boxShadow: [
-                          // ignore: prefer_const_constructors
-                          BoxShadow(
-                              color: const Color.fromARGB(255, 224, 224, 224),
-                              blurRadius: 80,
-                              offset: const Offset(0, 10))
-                        ]),
-                    child: Row(
-                      children: <Widget>[
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text(
-                                districtSelected == null
-                                    ? "เลือกตำบล"
-                                    : districtSelected!.nameTh,
-                                style: const TextStyle(fontSize: 16),
-                              ),
-                              const SizedBox(
-                                height: 4,
-                              ),
-                              // Text(
-                              //   districtSelected == null
-                              //       ? ""
-                              //       : districtSelected!.nameEn,
-                              //   style: const TextStyle(
-                              //       fontSize: 14, color: Colors.grey),
-                              // ),
-                            ],
-                          ),
-                        ),
-                        Icon(
-                          Icons.arrow_drop_down,
-                          color: Colors.grey[600],
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-
-                // TextButton(
-                //       onPressed: () {
-                //         setState(() {
-                //           address = 'จังหวัด:${provinceSelected!.nameTh},อำเภอ:${amphureSelected!.nameTh},ตำบล:${districtSelected!.nameTh}';
-                //         });
-                //       },
-                //       child: const Text("Print Data")
-                //       ),
-
-                const SizedBox(
-                  height: 10,
-                ),
-                const Text("ปักหมุดสถานที่พบ"),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                       const Text("ปักหมุดสถานที่ ณ ที่พบเบาะเเส",
+                           style: TextStyle(
+                               color: Color.fromARGB(255, 23, 21, 75),
+                               fontSize: 18,
+                               fontWeight: FontWeight.bold)),
+                       const Text(
+                         "(ปักหมุดสถานที่ก่อนกดถัดไป*)",
+                         style: TextStyle(color: Colors.red),
+                       ),
+                     
+                
                 const SizedBox(height: 8),
                 SizedBox(
-                  height: 450,
-                  width: 500,
+                  height: 300,
+                  width: 400,
                   child: FutureBuilder(
                     future: _getLocation(),
                     builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -676,16 +423,14 @@ class _FormcluesState extends State<Formclues> {
                     },
                   ),
                 ),
-                const SizedBox(
-                  height: 5,
-                ),
+                const SizedBox(height: 9,),
                 Center(
                     child: ElevatedButton.icon(
                   icon: const Icon(
-                    Icons.search_outlined,
+                    Icons.location_on,
                     size: 25,
                   ),
-                  label: const Text("บันทึกสถานที่"),
+                  label: const Text("ปักหมุดสถานที่"),
                   onPressed: () {
                     mapController.animateCamera(CameraUpdate.newLatLngZoom(
                         LatLng(position.latitude, position.longitude), 18));
@@ -695,7 +440,7 @@ class _FormcluesState extends State<Formclues> {
                       locationController.text = "$_lat,$_long";
                     });
                     Fluttertoast.showToast(
-                      msg: "บันทึกสถานที่เรียบร้อยแล้ว",
+                      msg: "ปักหมุดสถานที่เรียบร้อยแล้ว",
                       toastLength: Toast.LENGTH_SHORT,
                       gravity: ToastGravity.CENTER,
                       timeInSecForIosWeb: 1,
@@ -710,11 +455,356 @@ class _FormcluesState extends State<Formclues> {
                     ),
                   ),
                 )),
+                
+                      const SizedBox(
+                        height: 8,
+                      ),
+                    ],
+                  ),
+                ),
+             
                 const SizedBox(
                   height: 20,
-                )
+                ),
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  alignment: Alignment.center,
+                  // margin: EdgeInsets.all(20),
+                  height: 400,
+
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius:
+                        BorderRadius.circular(32), //border corner radius
+                    boxShadow: [
+                      BoxShadow(
+                        color: const Color.fromARGB(255, 227, 227, 227)
+                            .withOpacity(0.5), //color of shadow
+                        spreadRadius: 5, //spread radius
+                        blurRadius: 7, // blur radius
+                        offset: const Offset(0, 2), // changes position of shadow
+                        //first paramerter of offset is left-right
+                        //second parameter is top to down
+                      ),
+                      //you can set more BoxShadow() here
+                    ],
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                       Row(
+                          // ignore: prefer_const_literals_to_create_immutables
+                          children: [
+                            const Text("กรอกรายละเอียดสถานที่ด้วยตัวเอง",
+                                style: TextStyle(
+                                    color: Color.fromARGB(255, 23, 21, 75),
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold)),
+                            // const Text(
+                            //   "(ไม่บังคับ)",
+                            //   style: TextStyle(color: Colors.red),
+                            // ),
+                          ],
+                        ),
+                        const Text(
+                            "(บ้านเลขที่, หมู่บ้าน, ซอย, สถานที่ใกล้เคียงที่พบเบาะเเส)"),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      TextFormField(
+                        controller: addressController,
+                        onSaved: (Address) {
+                          cluesdata.Address = Address!;
+                        },
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(32)),
+                            borderSide:
+                                BorderSide(color: Color(0xFF244684), width: 2),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(32)),
+                            borderSide:
+                                BorderSide(color: Color(0xFF244684), width: 2),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(32)),
+                            borderSide: BorderSide(color: Colors.red, width: 2),
+                          ),
+                          prefixIcon: Icon(
+                            Icons.location_on_outlined,
+                            color: Colors.grey,
+                          ),
+                          label: Text(
+                            'กรอกข้อมูล ',
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                        ),
+                        maxLines: 5,
+                        minLines: 1,
+                      ),
+                      //ฐานข้อมูลจังหวัด
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      GestureDetector(
+                        onTap: () async {
+                          var list = await ProvinceProvider.all();
+
+                          // ignore: use_build_context_synchronously
+                          ProvinceDao province =
+                              await ChooseProvinceDialog.show(
+                            context,
+                            listProvinces: list,
+                            colorBackgroundHeader: MyColors.nBlue,
+                            colorLineHeader: MyColors.nOrange,
+                            styleTitle: const TextStyle(
+                              fontSize: 18,
+                            ),
+                            styleSubTitle: const TextStyle(
+                                fontSize: 14,
+                                color: Color.fromARGB(255, 255, 255, 255)),
+                            styleTextNoData: const TextStyle(),
+                            styleTextSearchHint: const TextStyle(),
+                            styleTextSearch: const TextStyle(),
+                            colorBackgroundDialog:
+                                const Color.fromARGB(255, 255, 255, 255),
+                            colorBackgroundSearch:
+                                const Color.fromARGB(255, 255, 255, 255),
+                            colorLine: const Color.fromARGB(255, 255, 255, 255),
+                          );
+
+                          setState(() {
+                            provinceSelected = province;
+                          });
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(32),
+                              color: Colors.white,
+                              // ignore: prefer_const_literals_to_create_immutables
+                              boxShadow: [
+                                // ignore: prefer_const_constructors
+                                BoxShadow(
+                                    color: const Color.fromARGB(
+                                        255, 224, 224, 224),
+                                    blurRadius: 80,
+                                    offset: const Offset(0, 10))
+                              ]),
+                          child: Row(
+                            children: <Widget>[
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text(
+                                      provinceSelected == null
+                                          ? "เลือกจังหวัด"
+                                          : provinceSelected!.nameTh,
+                                      style: const TextStyle(fontSize: 16),
+                                    ),
+                                    const SizedBox(
+                                      height: 4,
+                                    ),
+                                    // Text(
+                                    //   provinceSelected == null
+                                    //       ? ""
+                                    //       : provinceSelected!.nameEn,
+                                    //   style: const TextStyle(
+                                    //       fontSize: 14, color: Colors.grey),
+                                    // ),
+                                  ],
+                                ),
+                              ),
+                              Icon(
+                                Icons.arrow_drop_down,
+                                color: Colors.grey[600],
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      //ฐานข้อมูลอำเภอ
+                      GestureDetector(
+                        onTap: () async {
+                          var list = await AmphureProvider.all();
+
+                          // ignore: use_build_context_synchronously
+                          AmphureDao amphure = await ChooseAmphureDialog.show(
+                            context,
+                            listAmphure: list,
+                            colorBackgroundHeader: MyColors.nBlue,
+                            colorLineHeader: MyColors.nOrange,
+                            styleTitle: const TextStyle(
+                              fontSize: 18,
+                            ),
+                            styleSubTitle: const TextStyle(
+                                fontSize: 14,
+                                color: Color.fromARGB(255, 255, 255, 255)),
+                            styleTextNoData: const TextStyle(),
+                            styleTextSearchHint: const TextStyle(),
+                            styleTextSearch: const TextStyle(),
+                            colorBackgroundDialog:
+                                const Color.fromARGB(255, 255, 255, 255),
+                            colorBackgroundSearch:
+                                const Color.fromARGB(255, 255, 255, 255),
+                            colorLine: const Color.fromARGB(255, 255, 255, 255),
+                          );
+
+                          setState(() {
+                            amphureSelected = amphure;
+                          });
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(32),
+                              color: Colors.white,
+                              // ignore: prefer_const_literals_to_create_immutables
+                              boxShadow: [
+                                // ignore: prefer_const_constructors
+                                BoxShadow(
+                                    color: const Color.fromARGB(
+                                        255, 224, 224, 224),
+                                    blurRadius: 80,
+                                    offset: const Offset(0, 10))
+                              ]),
+                          child: Row(
+                            children: <Widget>[
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text(
+                                      amphureSelected == null
+                                          ? "เลือกอำเภอ"
+                                          : amphureSelected!.nameTh,
+                                      style: const TextStyle(fontSize: 16),
+                                    ),
+                                    const SizedBox(
+                                      height: 4,
+                                    ),
+                                    // Text(
+                                    //   amphureSelected == null
+                                    //       ? ""
+                                    //       : amphureSelected!.nameEn,
+                                    //   style: const TextStyle(
+                                    //       fontSize: 14, color: Colors.grey),
+                                    // ),
+                                  ],
+                                ),
+                              ),
+                              Icon(
+                                Icons.arrow_drop_down,
+                                color: Colors.grey[600],
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      //ฐานข้อมูลตำบล
+                     
+                      GestureDetector(
+                        onTap: () async {
+                          var list = await DistrictProvider.all();
+
+                          // ignore: use_build_context_synchronously
+                          DistrictDao district =
+                              await ChooseDistrictDialog.show(
+                            context,
+                            listDistrict: list,
+                            colorBackgroundHeader: MyColors.nBlue,
+                            colorLineHeader: MyColors.nOrange,
+                            styleTitle: const TextStyle(
+                              fontSize: 18,
+                            ),
+                            styleSubTitle: const TextStyle(
+                                fontSize: 14,
+                                color: Color.fromARGB(255, 255, 255, 255)),
+                            styleTextNoData: const TextStyle(),
+                            styleTextSearchHint: const TextStyle(),
+                            styleTextSearch: const TextStyle(),
+                            colorBackgroundDialog:
+                                const Color.fromARGB(255, 255, 255, 255),
+                            colorBackgroundSearch:
+                                const Color.fromARGB(255, 255, 255, 255),
+                            colorLine: const Color.fromARGB(255, 255, 255, 255),
+                          );
+
+                          setState(() {
+                            districtSelected = district;
+                          });
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(32),
+                              color: Colors.white,
+                              // ignore: prefer_const_literals_to_create_immutables
+                              boxShadow: [
+                                // ignore: prefer_const_constructors
+                                BoxShadow(
+                                    color: const Color.fromARGB(
+                                        255, 224, 224, 224),
+                                    blurRadius: 80,
+                                    offset: const Offset(0, 10))
+                              ]),
+                          child: Row(
+                            children: <Widget>[
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text(
+                                      districtSelected == null
+                                          ? "เลือกตำบล"
+                                          : districtSelected!.nameTh,
+                                      style: const TextStyle(fontSize: 16),
+                                    ),
+                                    const SizedBox(
+                                      height: 4,
+                                    ),
+                                    // Text(
+                                    //   districtSelected == null
+                                    //       ? ""
+                                    //       : districtSelected!.nameEn,
+                                    //   style: const TextStyle(
+                                    //       fontSize: 14, color: Colors.grey),
+                                    // ),
+                                  ],
+                                ),
+                              ),
+                              Icon(
+                                Icons.arrow_drop_down,
+                                color: Colors.grey[600],
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+
+                      const SizedBox(
+                        height: 8,
+                      ),
+                    ],
+                  ),
+                ),const SizedBox(
+                    height: 20,
+                  )
               ],
-            )),
+            ),
+            ),
         Step(
             title: const Text('กรอกข้อมูล'),
             state: currentStep > 1 ? StepState.complete : StepState.indexed,
@@ -725,14 +815,14 @@ class _FormcluesState extends State<Formclues> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const Text("รายละเอียดของเบาะแส",
+                  const Text("รายละเอียดของข้อมูลเบาะแส",
                       style: TextStyle(
                           color: Color.fromARGB(255, 23, 21, 75),
                           fontSize: 30.0,
                           fontWeight: FontWeight.bold)),
                   const Text("กรอกรายละเอียดของเบาะแสที่ท่านพบให้ครบถ้วน",
                       style: TextStyle(
-                          color: Color.fromARGB(255, 23, 21, 75),
+                          color: MyColors.nOrange,
                           fontSize: 15.0,
                           fontWeight: FontWeight.bold)),
                   const Divider(
@@ -1060,7 +1150,7 @@ class _FormcluesState extends State<Formclues> {
                     height: 30,
                   ),
                   Container(
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     alignment: Alignment.center,
                     // margin: EdgeInsets.all(20),
                     height: 260,
@@ -1072,11 +1162,11 @@ class _FormcluesState extends State<Formclues> {
                           BorderRadius.circular(32), //border corner radius
                       boxShadow: [
                         BoxShadow(
-                          color: Color.fromARGB(255, 227, 227, 227)
+                          color: const Color.fromARGB(255, 227, 227, 227)
                               .withOpacity(0.5), //color of shadow
                           spreadRadius: 5, //spread radius
                           blurRadius: 7, // blur radius
-                          offset: Offset(0, 2), // changes position of shadow
+                          offset: const Offset(0, 2), // changes position of shadow
                           //first paramerter of offset is left-right
                           //second parameter is top to down
                         ),
@@ -1182,7 +1272,7 @@ class _FormcluesState extends State<Formclues> {
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   )
                 ],
@@ -1196,14 +1286,14 @@ class _FormcluesState extends State<Formclues> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                const Text("ยืนยันการเเจ้งเบาะแส",
+                const Text("ยืนยันข้อมูลเเจ้งเบาะแส",
                     style: TextStyle(
                         color: Color.fromARGB(255, 23, 21, 75),
                         fontSize: 30.0,
                         fontWeight: FontWeight.bold)),
                 const Text("ตรวจสอบรายละเอียดก่อนทำการบันทึก",
                     style: TextStyle(
-                        color: Color.fromARGB(255, 23, 21, 75),
+                       color: MyColors.nOrange,
                         fontSize: 15.0,
                         fontWeight: FontWeight.bold)),
                 const Divider(
@@ -1442,7 +1532,7 @@ class _FormcluesState extends State<Formclues> {
                 btnOkOnPress: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const HomeBar()),
+                    MaterialPageRoute(builder: (context) =>  const HomeBar()),
                   );
                 }).show();
           },

@@ -10,7 +10,7 @@ import 'package:main_cluesnew/screen/Welclues.dart';
 import 'package:main_cluesnew/screen/contact.dart';
 
 class HomeBar extends StatefulWidget {
-  const HomeBar({
+  const HomeBar( {
     Key? key,
     this.title,
   }) : super(key: key);
